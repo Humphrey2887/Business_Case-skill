@@ -1,5 +1,5 @@
 <!-- @AI_GENERATED -->
-# Business Case Builder（远景咨询 Skill · 痛点驱动十一步法）
+# Business Case Builder（咨询 Skill · 痛点驱动十一步法）
 
 一个面向企业客户的 **Business Case 构建 Skill**。它以"痛点驱动的十一步法"，从客户真实经营命题出发，逐层拆解到可量化的痛点与场景，最终产出能打动决策层的 **Business Case PPT（及配套 .md）**。
 
