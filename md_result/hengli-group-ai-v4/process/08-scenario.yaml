@@ -1,0 +1,137 @@
+# @AI_GENERATED
+step: "08-scenario"
+mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本"
+length: "5min"
+scenario_count_target: "5-6"
+
+# 价值树关键影响因子（quantify_priority=high）标识，供 key_indicators 追溯
+key_factor_registry:
+  KF-1: "综合商品收率（%）"
+  KF-2: "高价值化工品收率（%）"
+  KF-3: "单位综合能耗（kgce/t）"
+  KF-4: "非计划停机时长（小时/年）"
+  KF-5: "产品一次合格率（%）"
+
+# value_status 说明：无客户内部数据，采用行业基准先行测算；
+# ready=可用行业示意基线直接测算出示意区间（金额均标示意·待回填）；to_verify=基线待调研/市场驱动，仅出框架不计入总额
+
+scenarios:
+  - id: "SC-1"
+    from_value_tree: true
+    name: "AI 收率优化与全流程实时寻优"
+    linked_big_pain: "BP-1"
+    linked_pains: ["P-1（收率寻优依赖人工经验）"]
+    impact_factors: ["综合商品收率", "高价值化工品收率"]
+    key_indicators:
+      - name: "综合商品收率"
+        unit: "%"
+        source_factor_id: "KF-1"
+      - name: "高价值化工品收率"
+        unit: "%"
+        source_factor_id: "KF-2"
+    ai_mechanism: "以原料性质、装置运行参数、产品分布与历史收率数据建模 → 识别收率损失模式与最优操作窗口 → 实时预测并推荐操作参数 → 闭环下发DCS/操作指导"
+    business_action: "按AI推荐实时调整操作参数与产品切割方案，稳定逼近最优收率"
+    closed_loop: ["数据采集", "收率损失识别", "参数寻优预测", "闭环下发DCS", "效果反馈迭代"]
+    feasibility:
+      controllability: true
+      data_availability: true
+      optimization_space: true
+      closed_loop: true
+      value_quantifiable: true
+    value_status: "ready"
+  - id: "SC-4"
+    from_value_tree: true
+    name: "AI 能源管控与蒸汽电热平衡优化"
+    linked_big_pain: "BP-2"
+    linked_pains: ["P-4（用能调控与公用工程未全局寻优）"]
+    impact_factors: ["单位综合能耗", "蒸汽电综合单耗指数"]
+    key_indicators:
+      - name: "单位综合能耗"
+        unit: "kgce/t"
+        source_factor_id: "KF-3"
+    ai_mechanism: "以各装置用能、蒸汽/电/热管网、负荷与气象数据建模 → 识别能效漂移与失衡 → 预测最优用能与联产调度 → 闭环能源调度与操作参数"
+    business_action: "按AI推荐进行蒸汽电热联产与用能调度，压降单位综合能耗"
+    closed_loop: ["用能数据采集", "能效漂移识别", "联产调度寻优", "闭环调度执行", "能耗反馈"]
+    feasibility:
+      controllability: true
+      data_availability: true
+      optimization_space: true
+      closed_loop: true
+      value_quantifiable: true
+    value_status: "ready"
+  - id: "SC-5"
+    from_value_tree: true
+    name: "AI 设备预测性维护与健康管理"
+    linked_big_pain: "BP-2"
+    linked_pains: ["P-6（设备故障缺早期预警）"]
+    impact_factors: ["非计划停机时长", "设备综合效率OEE"]
+    key_indicators:
+      - name: "非计划停机时长"
+        unit: "小时/年"
+        source_factor_id: "KF-4"
+    ai_mechanism: "以转动/换热等关键设备振动、温度、工艺与历史故障数据建模 → 识别早期劣化模式 → 预测剩余寿命与故障风险 → 闭环检修计划与备件调度"
+    business_action: "按预测预警提前安排检修与备件，减少非计划停机"
+    closed_loop: ["设备状态采集", "早期劣化识别", "剩余寿命预测", "闭环检修调度", "运行反馈"]
+    feasibility:
+      controllability: true
+      data_availability: true
+      optimization_space: true
+      closed_loop: true
+      value_quantifiable: true
+    value_status: "ready"
+  - id: "SC-6"
+    from_value_tree: true
+    name: "AI 在线质量检测与工艺闭环优化"
+    linked_big_pain: "BP-3"
+    linked_pains: ["P-7（质量波动反馈滞后）"]
+    impact_factors: ["产品一次合格率", "化纤断头率"]
+    key_indicators:
+      - name: "产品一次合格率"
+        unit: "%"
+        source_factor_id: "KF-5"
+    ai_mechanism: "以在线检测、工艺参数与质量结果数据建模 → 识别质量波动与工艺关联 → 预测质量偏移并推荐参数调整 → 闭环工艺控制"
+    business_action: "按AI推荐调整工艺参数，提升一次合格率、降低返工报废"
+    closed_loop: ["在线质检采集", "质量波动识别", "质量偏移预测", "闭环工艺调整", "质量反馈"]
+    feasibility:
+      controllability: true
+      data_availability: true
+      optimization_space: true
+      closed_loop: true
+      value_quantifiable: true
+    value_status: "ready"
+  - id: "SC-3"
+    from_value_tree: true
+    name: "AI 原油调合掺炼与采购择时优化"
+    linked_big_pain: "BP-1"
+    linked_pains: ["P-3（原油掺炼与采购择时靠经验）"]
+    impact_factors: ["原油综合采购单价差", "重质劣质原油掺炼比例"]
+    key_indicators:
+      - name: "原油综合采购单价差"
+        unit: "元/吨"
+        source_factor_id: "待升级（当前为mid，回填采购/掺炼基线后升级为关键影响因子再对齐）"
+    ai_mechanism: "以原油物性、装置适应性、价差与库存数据建模 → 识别最优掺炼配比与采购时机 → 预测掺炼经济性与价差窗口 → 闭环采购与调合作业"
+    business_action: "按AI推荐优化原油掺炼配比与采购择时"
+    closed_loop: ["原油物性/价差采集", "最优配比与时机识别", "掺炼经济性预测", "闭环采购与调合", "成本反馈"]
+    feasibility:
+      controllability: true
+      data_availability: false
+      optimization_space: true
+      closed_loop: true
+      value_quantifiable: false
+    value_status: "to_verify"
+    note: "采购价差受市场波动、基线待调研，仅出量化框架、暂不计入总额；关键指标待回填数据升级为high后按4b对齐"
+
+excluded_scenarios:
+  - scenario: "AI 全链一体化排产优化（SC-2）"
+    handling: "downgraded"
+    reason: "对应痛点P-2（全链排产协同不足）为战略/背景痛点，跨环节协同损失归因难、缺baseline"
+    methodology_category: "价值可量化不足（缺baseline）"
+
+gates:
+  feasibility_summary: "5个关键场景：SC-1/SC-4/SC-5/SC-6 五门槛全通过（ready，行业基准先行）；SC-3 数据可得性/价值可量化暂不满足→to_verify"
+  count_check: "5个关键场景（4 ready + 1 to_verify），符合5min档5-6个下限"
+  scenario_id_writeback: "沿用03的SC-1/SC-3/SC-4/SC-5/SC-6，未另起编号；SC-2降级"
+  key_indicator_alignment: "ready场景key_indicators全部取自价值树high关键影响因子(KF-1~KF-5)、一一对应、标source_factor_id；SC-3关键指标待数据回填升级后对齐（4b.3路径1）"
+
+status: "complete"
+# @AI_GENERATED: end

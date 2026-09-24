@@ -1,0 +1,282 @@
+<!-- @AI_GENERATED -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLUENCE 全栈架构</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* palette referenced from image 2 */
+    --ink:        #2b2f38;
+    --ink-soft:   #55606f;
+    --page-bg:    #ffffff;
+
+    /* layer band + box colors (rectangular, no rounded corners) */
+    --blue-band:   #e6f0fb;  --blue-line:   #5b9bd5;  --blue-box:  #f4f9fe;
+    --yellow-band: #faf2d6;  --yellow-line: #e0b02e;  --yellow-box:#fffdf3;
+    --purple-band: #ece6f7;  --purple-line: #9179c7;  --purple-box:#f8f5fd;
+    --slate-band:  #e5e8f0;  --slate-line:  #7986cb;  --slate-box: #f6f7fb;
+    --group-blue:  #d9e8f8;
+    --group-yellow:#f6e9bf;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: var(--page-bg);
+    color: var(--ink);
+    padding: 32px 28px 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .canvas { width: 100%; max-width: 1180px; }
+
+  /* ---- Title banner ---- */
+  .banner {
+    background: linear-gradient(90deg, #1f2937 0%, #2b3648 100%);
+    color: #fff;
+    padding: 18px 26px;
+    border: 2px solid #111827;
+    margin-bottom: 22px;
+  }
+  .banner h1 { font-size: 24px; font-weight: 900; letter-spacing: 1px; }
+  .banner p  { font-size: 14px; font-weight: 400; color: #cbd5e1; margin-top: 4px; }
+
+  /* ---- Layer row: left label + right band ---- */
+  .layer { display: flex; align-items: stretch; margin-bottom: 16px; }
+
+  .layer-label {
+    flex: 0 0 118px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 16px;
+  }
+  .layer-label .cn { font-size: 17px; font-weight: 700; }
+  .layer-label .en { font-size: 12px; font-weight: 500; color: var(--ink-soft); margin-top: 3px; }
+
+  .band {
+    flex: 1;
+    border: 2px solid;
+    padding: 14px 16px;
+  }
+  .band-caption {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+
+  /* ---- Boxes (rectangular) ---- */
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .row + .row { margin-top: 12px; }
+
+  .box {
+    background: #fff;
+    border: 1.5px solid;
+    padding: 9px 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---- Group cards (like 业务A/B/C) ---- */
+  .groups { display: flex; gap: 16px; }
+  .group {
+    flex: 1;
+    border: 1.5px solid;
+    padding: 12px;
+  }
+  .group-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .group-head .name { font-size: 16px; font-weight: 700; }
+  .group-head .sub  { font-size: 12px; color: var(--ink-soft); }
+  .group-head .aum  { font-size: 12px; font-weight: 700; color: var(--ink); background: #fff; border: 1px solid var(--yellow-line); padding: 2px 8px; }
+  .chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .chip {
+    background: #fff;
+    border: 1.5px solid;
+    padding: 8px 6px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+
+  /* ---- color assignments ---- */
+  .band.blue   { background: var(--blue-band);   border-color: var(--blue-line); }
+  .band.yellow { background: var(--yellow-band); border-color: var(--yellow-line); }
+  .band.purple { background: var(--purple-band); border-color: var(--purple-line); }
+  .band.slate  { background: var(--slate-band);  border-color: var(--slate-line); }
+
+  .box.blue   { border-color: var(--blue-line); }
+  .box.purple { border-color: var(--purple-line); }
+  .box.slate  { border-color: var(--slate-line); }
+
+  .group.mosaic  { background: var(--group-yellow); border-color: var(--yellow-line); }
+  .group.nispera { background: var(--group-blue);   border-color: var(--blue-line); }
+  .group.mosaic  .chip { border-color: var(--yellow-line); }
+  .group.nispera .chip { border-color: var(--blue-line); }
+  .group.nispera .aum  { border-color: var(--blue-line); }
+
+  .note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--yellow-line);
+  }
+
+  /* ---- connectors between layers ---- */
+  .connector { display: flex; }
+  .connector .spacer { flex: 0 0 118px; }
+  .connector .arrow {
+    flex: 1;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1;
+    margin: -8px 0 6px;
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+
+    <!-- Title -->
+    <div class="banner">
+      <h1>FLUENCE 全栈架构</h1>
+      <p>“硬件 + 控制 OS + 数字应用” 垂直一体（储能为核心）</p>
+    </div>
+
+    <!-- Layer 1: Digital Platform -->
+    <div class="layer">
+      <div class="layer-label">
+        <span class="cn">数字平台层</span>
+        <span class="en">Fluence IQ</span>
+      </div>
+      <div class="band yellow">
+        <div class="band-caption">云端微服务 + API + 伙伴应用生态（含第三方系统）</div>
+        <div class="groups">
+          <!-- Mosaic -->
+          <div class="group mosaic">
+            <div class="group-head">
+              <div>
+                <span class="name">Mosaic</span>
+                <span class="sub">智能竞价 / 交易</span>
+              </div>
+              <span class="aum">13.3 GW AUM</span>
+            </div>
+            <div class="chip-grid">
+              <div class="chip">ML 价格预测</div>
+              <div class="chip">多市场最优竞价</div>
+              <div class="chip">DART 日前/实时协优</div>
+              <div class="chip">风险管理设置</div>
+              <div class="chip">5 分钟级 intra-hour</div>
+              <div class="chip">RL 策略持续进化</div>
+            </div>
+          </div>
+          <!-- Nispera -->
+          <div class="group nispera">
+            <div class="group-head">
+              <div>
+                <span class="name">Nispera</span>
+                <span class="sub">资产性能管理 APM</span>
+              </div>
+              <span class="aum">15.5 GW AUM</span>
+            </div>
+            <div class="chip-grid">
+              <div class="chip">实时监控</div>
+              <div class="chip">自动报表</div>
+              <div class="chip">AI 性能分析</div>
+              <div class="chip">预测性维护（附加模块）</div>
+              <div class="chip">隐藏性能问题识别</div>
+              <div class="chip">商业 KPI 可视</div>
+            </div>
+          </div>
+        </div>
+        <div class="note">两大产品并列，各自闭环；平台层做数据集成，但不做跨域利润归因</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="spacer"></div><div class="arrow">&#9650;&nbsp;&#9660;</div></div>
+
+    <!-- Layer 2: Fluence OS -->
+    <div class="layer">
+      <div class="layer-label">
+        <span class="cn">控制层</span>
+        <span class="en">Fluence OS</span>
+      </div>
+      <div class="band purple">
+        <div class="band-caption">储能控制操作系统 · 单站到全 fleet</div>
+        <div class="row">
+          <div class="box purple">构网 (grid forming)</div>
+          <div class="box purple">微网</div>
+          <div class="box purple">快速调频</div>
+          <div class="box purple">下垂控制</div>
+          <div class="box purple">电压支撑</div>
+        </div>
+        <div class="row">
+          <div class="box purple">综合控制</div>
+          <div class="box purple">资产管理</div>
+          <div class="box purple">系统可视</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="spacer"></div><div class="arrow">&#9650;&nbsp;&#9660;</div></div>
+
+    <!-- Layer 3: Hardware -->
+    <div class="layer">
+      <div class="layer-label">
+        <span class="cn">硬件层</span>
+        <span class="en">BESS 系统集成</span>
+      </div>
+      <div class="band blue">
+        <div class="band-caption">Fluence 储能硬件</div>
+        <div class="row">
+          <div class="box blue">电池系统</div>
+          <div class="box blue">PCS 功率电子</div>
+          <div class="box blue">本地硬件</div>
+          <div class="box blue">数据中心 / 电网级方案</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="spacer"></div><div class="arrow">&#9650;&nbsp;&#9660;</div></div>
+
+    <!-- Layer 4: Assets & Market -->
+    <div class="layer">
+      <div class="layer-label">
+        <span class="cn">资产与市场层</span>
+        <span class="en">Assets &amp; Market</span>
+      </div>
+      <div class="band slate">
+        <div class="band-caption">发电资产（含第三方系统）· 电力市场</div>
+        <div class="row">
+          <div class="box slate">储能电站</div>
+          <div class="box slate">风电</div>
+          <div class="box slate">光伏</div>
+          <div class="box slate">水电站</div>
+          <div class="box slate">第三方系统</div>
+          <div class="box slate">电力市场</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+<!-- @AI_GENERATED: end -->

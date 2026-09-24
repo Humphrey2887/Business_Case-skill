@@ -1,0 +1,110 @@
+# @AI_GENERATED
+step: "11-roadmap"
+client: "恒力集团"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性（cost_down）"
+t0: "2026-08（假设值，待客户确认）"
+cadence: "集团级·年度节奏"
+
+waves:
+  - scenario_id: "SC-1"
+    value: "高（0.9-3.6亿/年示意）"
+    readiness: "ready"
+    wave: "wave1"
+    rationale: "能耗寻优 APC/RTO 成熟、数据可得，Quick Win"
+  - scenario_id: "SC-6"
+    value: "高（1.0-3.0亿/年示意）"
+    readiness: "ready"
+    wave: "wave1"
+    rationale: "预测性维护数据可得、见效快、损失敏感"
+  - scenario_id: "SC-3"
+    value: "高（2.0-5.0亿/年示意）"
+    readiness: "ready"
+    wave: "wave1"
+    rationale: "收率优化价值最大、数据可得"
+  - scenario_id: "SC-4"
+    value: "中高（1.0-3.1亿/年示意）"
+    readiness: "ready（需在线检测接入）"
+    wave: "wave2"
+    rationale: "依赖聚合在线检测接入完善度"
+  - scenario_id: "SC-7"
+    value: "中高（1.0-3.0亿/年示意）"
+    readiness: "依赖阶段2碳台账回填"
+    wave: "wave2"
+    rationale: "能碳协同需先建碳排放台账与口径（阶段2回填）"
+  - scenario_id: "SC-2"
+    value: "中（待量化）"
+    readiness: "to_verify（缺蒸汽平衡基线）"
+    wave: "wave3"
+    rationale: "缺数据底座，前置在阶段2补基线"
+  - scenario_id: "SC-5"
+    value: "中（待量化）"
+    readiness: "to_verify（缺切换损失基线）"
+    wave: "wave3"
+    rationale: "缺基线，排产优化需 MES 数据完善"
+
+phases:
+  - phase: 1
+    name: "需求摸排与场景定标"
+    period: "2026-08 ~ 2026-09"
+    goal: "锁定高价值场景、建设节奏与实施边界"
+    key_actions:
+      - "试点基地（长兴岛炼化/PTA/聚酯）业务流程与系统现状梳理"
+      - "确认 7 场景优先级与首批智能体组合（SC-1/3/6 首批）"
+      - "划定总部统建/区域适配/现场执行边界"
+      - "回收期与投资边界评估、形成路线图与里程碑"
+    deliverables: ["场景清单与优先级", "首批场景方案", "建设边界", "路线图与里程碑"]
+    scenarios: ["全部7场景定标"]
+  - phase: 2
+    name: "数据汇聚与本体构建"
+    period: "2026-10 ~ 2026-12"
+    goal: "构建可复用数据底座与统一业务本体"
+    key_actions:
+      - "对接 DCS/LIMS/设备监测/MES/能碳台账/公用工程平台"
+      - "构建炼化—化纤统一业务本体（存在论/认识论/实践论三框）"
+      - "★回填第9步待确认基线：能耗/收率/优等品率/停车损失/碳排放/碳价，及 SC-2蒸汽平衡、SC-5切换损失基线"
+      - "建设指标口径、数据/指标/策略服务接口"
+    deliverables: ["数据底座", "统一业务本体", "指标字典/知识库", "标准化能力接口"]
+    scenarios: ["基线回填→SC-1/3/4/6/7 校准，SC-2/SC-5 升级为可量化"]
+  - phase: 3
+    name: "高价值场景与智能体上线"
+    period: "2027-01 ~ 2027-06"
+    goal: "首批高价值智能体上线，形成 AI 参与决策示范"
+    key_actions:
+      - "wave1 上线：装置能耗寻优(AG-1)、收率优化(AG-2)、预测性维护(AG-4)"
+      - "wave2 推进：质量在线优化(AG-3)、能碳协同(AG-5)"
+      - "联通生产/能源/设备系统，完成模型训练与试点验证、真实数据联合运营"
+    deliverables: ["首批场景应用与智能体", "运营工作台", "场景运行报告", "初步收益回测"]
+    scenarios: ["SC-1", "SC-3", "SC-6", "SC-4", "SC-7"]
+  - phase: 4
+    name: "稳定运营与复制扩展"
+    period: "2027-07 ~ 2028-06 及以后"
+    goal: "从单点优化升级为多场景联动闭环，向全集团多基地复制"
+    key_actions:
+      - "wave3 上线：全厂能量调度(AG-6)、智能排产切换"
+      - "建立策略执行/效果评估/复盘闭环，收益确认机制"
+      - "沉淀本体/模型/策略模板，参数化适配各基地，向未上市炼化/织造/康辉新材推广"
+    deliverables: ["稳定运营机制", "收益确认机制", "标准场景包", "参数化复制模板", "集团级能力资产"]
+    scenarios: ["SC-2", "SC-5", "全集团多基地复制"]
+
+build_boundary:
+  headquarters: "数据底座、统一业务本体、寻优/预测算法平台、能碳MRV平台"
+  regional: "各基地装置参数、能源结构、区域政策与场站参数适配"
+  onsite: "装置操作参数执行、按状态检修、能源调度、排产切换现场落地"
+
+dependencies_risks:
+  - risk: "装置级数据质量/接入不足"
+    mitigation: "阶段2 优先打通试点基地核心数据源，分批扩展"
+  - risk: "APC/寻优闭环需与现有控制系统集成"
+    mitigation: "先建议→人工确认，再逐步提升自动闭环比例"
+  - risk: "碳排放台账与碳价口径不确定"
+    mitigation: "SC-7 前置于阶段2 建台账，成熟后并入总额"
+
+value_closure: "阶段2 数据汇聚显式回填第9步 to_confirm 基线 → SC-2/SC-5 由潜在价值池升入 Business Case 总额，SC-1/3/4/6/7 由行业示意校准为企业真实测算"
+
+gates:
+  t0_taken: "assumption（T0=2026-08 假设，检查点向用户确认）"
+  wave_order: "pass（缺数据底座的 SC-2/SC-5 排 wave3，前置基线落阶段2；高价值就绪 SC-1/3/6 首批）"
+  four_phase: "pass（固定四阶段，绝对日期由 T0 累加）"
+
+status: "complete"
+# @AI_GENERATED: end

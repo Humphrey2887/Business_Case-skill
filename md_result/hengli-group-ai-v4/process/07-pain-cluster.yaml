@@ -1,0 +1,36 @@
+# @AI_GENERATED
+step: "07-pain-cluster"
+mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本"
+
+big_pains:
+  - id: "BP-1"
+    name: "全产业链'原料到产品'的转化价值未被充分榨取——收率与原料成本仍有系统性优化空间"
+    member_pains: ["P-1（收率寻优依赖人工经验）", "P-3（原油掺炼与采购择时靠经验）"]
+    supporting_factors: ["综合商品收率", "高价值化工品收率", "原油综合采购单价差", "重质劣质原油掺炼比例"]
+    value_contribution: "成本降低——作用于占成本约80%~85%的最大成本项（原料），收率+0.5~1pct与采购/掺炼优化经海量产能放大后绝对值最大（示意·待回填）"
+  - id: "BP-2"
+    name: "能源与重资产可靠性拖累现金成本——单位综合能耗偏高与大装置非计划停机损失并存"
+    member_pains: ["P-4（用能调控与公用工程未全局寻优）", "P-6（设备故障缺早期预警）"]
+    supporting_factors: ["单位综合能耗", "蒸汽电综合单耗指数", "非计划停机时长", "设备综合效率OEE"]
+    value_contribution: "成本降低+风险损失——单位综合能耗-1~3%、非计划停机-10~20%（示意·待回填），直接降低能源成本与停机损失，兼应对能耗双控"
+  - id: "BP-3"
+    name: "下游质量波动侵蚀薄利环节现金流——一次合格率不稳推高返工报废"
+    member_pains: ["P-7（质量波动反馈滞后）"]
+    supporting_factors: ["产品一次合格率", "化纤断头率"]
+    value_contribution: "成本降低——一次合格率提升、断头率下降，减少返工降级报废，改善聚酯/新材料薄利环节现金流（示意·待回填）"
+
+strategic_background_notes:
+  - pain_ref: "P-2（全链排产协同不足）"
+    reason: "价值高但跨环节协同损失归因难、缺baseline（可验证性4<6）"
+    promote_trigger: "补齐全链排产、库存与切换损失数据后，可升入BP-1主叙事"
+  - pain_ref: "P-5（装置能效漂移难及时发现）"
+    reason: "能效漂移归因难、缺baseline（可验证性4<6）"
+    promote_trigger: "补齐装置能效在线监测与基线数据后，可并入BP-2"
+
+gates:
+  business_problem_oriented: "pass（三个大痛点均为'经营问题+价值空间'句式，非技术模块，无'缺XX系统'）"
+  traceability: "pass（每个大痛点均可追到≥1核心痛点+支撑影响因子）"
+  serves_decision: "pass（每个大痛点对应一次'是否投入AI攻坚'的取舍判断）"
+
+status: "complete"
+# @AI_GENERATED: end

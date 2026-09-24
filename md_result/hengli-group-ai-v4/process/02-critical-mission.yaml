@@ -1,0 +1,237 @@
+# @AI_GENERATED
+step: "02-critical-mission"
+industry: "炼化一体化 + 聚酯化纤 / 化工新材料"
+client: "恒力集团（Hengli Group）"
+
+research_inputs:
+  industry_common_mission_critical: "cost_down 为主、asset_efficiency 次之：强周期与能耗双控下压降单位加工成本、提升全链协同效率"
+  business_process_economics_summary: "原料采购占成本约80%~85%；炼化收率与单位综合能耗、PTA/聚酯单耗与良率、大装置非计划停机为核心成本热点；新材料高端良率为收益热点（均示意·待回填）"
+  data_ledger_summary: "原料占成本80%~85%（行业公开·中）、能源5%~12%（行业公开·低）、长兴岛2000万吨/年（行业公开·中）、恒力石化营收约2300~2400亿元/年（公司公开·低）；客户运营级数据缺失"
+  initial_client_mc_options: ["cost_down：AI压降全链单位加工成本", "revenue_up：AI提升高端新材料良率与结构", "both：降本为主增收为辅"]
+
+research_summary:
+  client_type: "民营特大型综合性大石化产业集团（世界500强）"
+  company_ontology: "全产业链一体化制造集团，从原油到芳烃/烯烃—PTA—聚酯—化纤/薄膜/新材料，核心职责为规模化制造并销售石化与聚酯新材料产品"
+  industry_environment: "强周期、价差收窄、产能过剩、能耗双控、减油增化与新材料高端化"
+  external_trends: "成品油需求见顶；工业AI/APC/RTO与智能工厂加速落地；双碳抬升能耗与碳成本"
+  core_responsibility: "以一体化规模成本优势 + 加工价差创造价值"
+  key_constraints: "原料+能源占成本绝对大头、利润随价差大幅波动、重资产非计划停机损失大"
+  uploaded_material_position: "不适用（无上传材料）；AI化转型归位为公司战略级 + 跨业务线运营提效"
+
+industry_client_mc_alignment:
+  relationship: "aligned"
+  industry_common_mc: "压降单位加工成本 + 提升全链协同效率（cost_down 为主）"
+  client_specific_observation: "恒力全链一体化程度与单体产能规模居行业前列，单位成本改善经海量产能放大后绝对值显著高于中小同业"
+  implication_for_candidate_generation: "客户MC与行业普遍MC一致，聚焦成本竞争力；候选应围绕收率/能耗/可靠性/全链协同的降本主线"
+  evidence:
+    - "原料占成本约80%~85%（行业公开·示意）"
+    - "长兴岛2000万吨/年单体规模（行业公开）"
+
+process_economics_diagnosis:
+  cost_hotspots:
+    - process: "炼化生产（常减压/重整/芳烃/乙烯）"
+      cost_item: "转化收率、单位综合能耗"
+      share_or_amount: "能源占成本约5%~12%；收率每+1pct边际可观（示意）"
+      why_material: "占比高+可控性强+减油增化下高价值收率决定毛利"
+      evidence: ["行业成本结构（industry_public）"]
+      data_confidence: "low"
+    - process: "PTA/MEG 与聚酯纺丝"
+      cost_item: "单位能耗、良率/断头率、OEE"
+      share_or_amount: "加工费薄、单耗与良率敏感（示意）"
+      why_material: "薄利环节，单耗与良率直接决定现金成本"
+      evidence: ["行业公开"]
+      data_confidence: "low"
+    - process: "原油/原料采购与全链排产"
+      cost_item: "采购择时/库存、跨环节排产协同"
+      share_or_amount: "原料占成本80%~85%（示意）"
+      why_material: "最大成本项，微小优化绝对值巨大"
+      evidence: ["行业成本结构（industry_public）"]
+      data_confidence: "low"
+  revenue_hotspots:
+    - process: "化工新材料/功能薄膜（康辉新材）"
+      revenue_item: "高端良率与高附加值占比"
+      share_or_amount: "高端溢价（示意）"
+      why_material: "减油增化下的增长与结构升级来源"
+      evidence: ["公司公开"]
+      data_confidence: "low"
+  asset_or_risk_hotspots:
+    - process: "设备资产运维与可靠性"
+      item: "大装置非计划停机损失"
+      value_impact: "单次停机损失巨大"
+      why_material: "重资产可靠性直接影响产出与安全"
+      evidence: ["设备检修行业公开（industry_public）"]
+      data_confidence: "low"
+
+value_direction_diagnosis:
+  cost_down:
+    supported: true
+    rationale: "成本热点明显且可控性强（收率/能耗/可靠性/采购排产），原料+能源占成本绝对大头，海量产能放大单位改善"
+    supporting_processes: ["炼化生产", "PTA/聚酯", "原料采购与全链排产", "设备运维"]
+    evidence: ["原料占成本80%~85%", "能源5%~12%", "长兴岛2000万吨/年"]
+  revenue_up:
+    supported: false
+    rationale: "增收依赖高端新材料良率与结构升级，但缺客户良率/溢价数据，暂不足以独立支撑主线"
+    supporting_processes: ["康辉新材"]
+    evidence: ["高端占比提升（示意）"]
+  both:
+    supported: false
+    rationale: "两者兼顾可行，但增收侧数据薄弱；本轮聚焦降本主线更稳健"
+    condition: "客户回填新材料良率/溢价数据后可升级为 both"
+  recommendation:
+    suggested_direction: "cost_down"
+    reason: "行业普遍命题与客户成本结构一致指向成本竞争力，且降本抓手数据可行性、可控性、可量化性更强"
+    caveat: "增收侧（新材料高端化）价值真实存在，建议作为潜在方向保留，待运营数据回填后评估是否升级为 both"
+
+candidate_groups:
+  cost_down:
+    - id: "COST-1"
+      mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本（核心抓手：提升转化收率、降低单位综合能耗、减少大装置非计划停机、优化全链排产）"
+      level: "company"
+      primary_kpi: "全产业链单位加工完全成本 / 周期底部现金成本竞争力（子锚点：综合商品收率、单位综合能耗 kgce/t、非计划停机损失）"
+      key_levers: ["提升炼化转化收率", "降低单位综合能耗", "减少非计划停机", "全链排产与原料优化协同"]
+      linked_process_hotspots: ["炼化生产", "PTA/聚酯", "原料采购与全链排产", "设备运维"]
+      industry_mc_alignment: "一致（aligned）"
+      evidence: ["原料占成本80%~85%", "长兴岛2000万吨/年", "能源5%~12%"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: false
+      uncertainty: "缺客户运营级基线数据，量级为示意"
+    - id: "COST-2"
+      mission_critical: "提升低碳运营经济性，用AI降低单位综合能耗与碳成本（能碳 Option）"
+      level: "business_line"
+      primary_kpi: "单位综合能耗 kgce/t、单位产品碳排放与碳成本"
+      key_levers: ["能源系统优化", "蒸汽/电平衡优化", "用能设备AI调优"]
+      linked_process_hotspots: ["能源与公用工程/碳排放", "炼化生产"]
+      industry_mc_alignment: "一致（能耗双控放大该问题）"
+      evidence: ["能源占成本5%~12%", "能耗双控政策"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: true
+      uncertainty: "缺能耗与碳数据；作为COST-1下的能碳分支更合适"
+    - id: "COST-3"
+      mission_critical: "提升重资产运营可靠性，用AI降低大装置非计划停机损失"
+      level: "business_line"
+      primary_kpi: "非计划停机时长/频次、设备综合效率OEE"
+      key_levers: ["预测性维护", "转动/换热设备健康管理"]
+      linked_process_hotspots: ["设备资产运维与可靠性"]
+      industry_mc_alignment: "一致（资产效率）"
+      evidence: ["设备故障占非计划停机高比例（示意）"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: false
+      uncertainty: "缺停机损失数据；作为COST-1下的可靠性分支"
+  revenue_up:
+    - id: "REV-1"
+      mission_critical: "提升化工新材料高端竞争力，用AI提升功能薄膜/新材料良率与高附加值产品占比"
+      level: "business_line"
+      primary_kpi: "高端产品A品率/良率、高附加值产品收入占比"
+      key_levers: ["工艺参数AI优化", "在线质量检测与闭环"]
+      linked_process_hotspots: ["化工新材料/功能薄膜（康辉新材）"]
+      industry_mc_alignment: "更聚焦（减油增化增长侧）"
+      evidence: ["高端占比提升（示意）"]
+      value_tree_implication: "single_revenue_tree"
+      energy_carbon_related: false
+      uncertainty: "缺良率/溢价数据"
+  both:
+    - id: "BOTH-1"
+      mission_critical: "以降本为主、增收为辅推进AI转型：压降全链单位加工成本，同时提升高端新材料良率与结构"
+      level: "company"
+      primary_kpi: "全链单位加工完全成本 + 高附加值产品收入占比"
+      key_levers: ["收率/能耗/可靠性降本", "新材料良率与结构增收"]
+      linked_process_hotspots: ["炼化生产", "PTA/聚酯", "康辉新材"]
+      industry_mc_alignment: "一致 + 增长侧聚焦"
+      evidence: ["成本侧数据较全、增收侧数据薄弱"]
+      value_tree_implication: "cost_and_revenue_trees"
+      energy_carbon_related: false
+      uncertainty: "增收侧数据不足，暂不作为本轮主线"
+
+comparison:
+  - id: "COST-1"
+    scores:
+      mission_criticality: 10
+      constraint_strength: 10
+      business_value_impact: 10
+      trend_pressure: 8
+      evidence_strength: 8
+      decomposability: 10
+      actionability: 8
+      client_fit: 10
+    energy_carbon_relevance: "中（能耗为其子分支）"
+    recommend_judgment: "推荐——公司级、可拆价值树、主KPI可量化、抓手可行动、契合成本竞争力主线"
+  - id: "COST-2"
+    scores:
+      mission_criticality: 7
+      constraint_strength: 8
+      business_value_impact: 6
+      trend_pressure: 8
+      evidence_strength: 6
+      decomposability: 8
+      actionability: 7
+      client_fit: 8
+    energy_carbon_relevance: "高"
+    recommend_judgment: "不单独推荐——作为COST-1的能碳分支（未同时满足能碳5条件全部，缺数据）"
+  - id: "COST-3"
+    scores:
+      mission_criticality: 7
+      constraint_strength: 7
+      business_value_impact: 7
+      trend_pressure: 6
+      evidence_strength: 5
+      decomposability: 7
+      actionability: 7
+      client_fit: 8
+    energy_carbon_relevance: "低"
+    recommend_judgment: "不单独推荐——作为COST-1的可靠性分支"
+
+recommendation:
+  recommended_id: "COST-1"
+  mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本（提升转化收率、降低单位综合能耗、减少非计划停机、优化全链排产）"
+  level: "company"
+  primary_kpi: "全产业链单位加工完全成本 / 周期底部现金成本竞争力"
+  key_levers: ["提升炼化转化收率", "降低单位综合能耗", "减少非计划停机", "全链排产与原料优化协同"]
+  connection_chain:
+    our_offering: "面向流程工业的工业AI优化平台 + 场景化 AI Agent（收率优化、能源优化、预测性维护、全链排产优化）"
+    value_tree_branch: "落在'单位加工成本'主干下的收率/能耗/可靠性/排产多个分支"
+    chain: "工业AI平台与Agent → 改善影响因子(综合商品收率↑、单位综合能耗↓、非计划停机↓、排产协同↑) → 价值方向(单位加工完全成本↓) → 公司级主KPI(全链单位完全成本/周期底部现金成本) → 公司级命题(穿越周期盈利韧性)"
+    magnitude_per_hop: "收率 +0.5~1pct、单位能耗 -1~3%、非计划停机 -10~20%（示意·待回填）→ 经海量产能放大后年化数亿~数十亿级（示意·待回填）"
+    honest_boundary: "单位改善幅度需客户运营基线校准；本阶段量级为行业类比示意，非承诺；真实收益取决于装置现状与数据就绪度"
+  reasons:
+    client_ontology_fit: "契合恒力'全产业链一体化制造'本体与成本竞争力价值逻辑"
+    core_conflict_hit: "命中强周期+价差收窄下'成本竞争力=生存线'的核心矛盾"
+    priority_judgment: "价差收窄期，单位成本竞争力是当前必须优先解决的问题，而非一般重要"
+    advantage_over_others: "比单点能碳/单点可靠性更上位，可统摄多分支且经海量产能放大绝对值最大"
+    other_candidates_position: "COST-2能碳、COST-3可靠性为其子分支；REV-1新材料增收为潜在方向；BOTH-1待增收数据回填后评估"
+    uploaded_material_position: "不适用（无上传材料）"
+    business_case_support: "足够大、可拆价值树、主KPI可量化、抓手可行动，支撑后续场景与价值量化"
+    primary_kpi_role: "全链单位加工完全成本作为锚点衡量命题改善，收率/能耗/停机为其子指标"
+
+user_value_direction_choice:
+  status: "confirmed"
+  selected_direction: "cost_down"
+  selected_by_user: true
+  user_comment: "用户在步骤01检查点明确指示'价值树降本为主'"
+  implication_for_value_tree: "single_cost_tree"
+
+confirmed_customer_mission:
+  value_direction: "cost_down"
+  mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本（提升转化收率、降低单位综合能耗、减少非计划停机、优化全链排产）"
+  primary_kpi: "全产业链单位加工完全成本 / 周期底部现金成本竞争力（子锚点：综合商品收率、单位综合能耗 kgce/t、非计划停机损失）"
+  key_levers: ["提升炼化转化收率", "降低单位综合能耗", "减少大装置非计划停机", "全链排产与原料优化协同"]
+  selected_candidate_id: "COST-1"
+  confirmation_status: "confirmed"
+  reason_for_selection: "用户确认：命中强周期下成本竞争力核心矛盾，公司级、可拆价值树、主KPI可量化、抓手可行动；能碳与设备可靠性作为其子分支"
+
+downstream_contract:
+  value_tree_mode: "single_cost_tree"
+  tree_calibers_required: ["cost_saving"]
+  must_use_process_hotspots: ["炼化生产（收率/能耗）", "PTA/聚酯（单耗/良率/OEE）", "原料采购与全链排产", "设备资产运维（非计划停机）"]
+  must_use_data_ledger_metrics: ["原料占成本80%~85%", "能源占成本5%~12%", "长兴岛2000万吨/年产能"]
+  note: "downstream_contract 已随检查点B最终MC确认（COST-1）正式生效"
+
+data_gaps:
+  - gap: "客户运营级基线（收率/能耗/停机/良率/OEE）"
+    affects: "价值树影响因子基线与后续量化"
+    needed_from_user: "分装置/分产线运营KPI台账"
+  - gap: "现有信息化/自动化/AI应用现状"
+    affects: "场景就绪度与连接链量级"
+    needed_from_user: "DCS/MES/APC/数据中台/试点清单"
+
+status: "complete"
+# @AI_GENERATED: end

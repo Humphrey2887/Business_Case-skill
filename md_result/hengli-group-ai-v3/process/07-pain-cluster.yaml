@@ -1,0 +1,36 @@
+# @AI_GENERATED
+step: "07-pain-cluster"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性（cost_down）"
+
+big_pains:
+  - id: "BP-1"
+    name: "装置能耗与全厂能量协同长期未逼近最优，单位综合能耗仍有系统性下降空间"
+    member_pains: ["P-1（装置工况寻优依赖人工经验）", "P-2（全厂能量协同调度不足）"]
+    supporting_factors: ["单位产品综合能耗", "蒸汽管网损失率"]
+    value_contribution: "成本降低（能源）——能源占营业成本约6-10%，装置规模放大单位能耗改善的绝对金额"
+  - id: "BP-2"
+    name: "原料转化与产品质量靠人工经验，高价值收率与聚酯优等品率存在价差损失"
+    member_pains: ["P-4（反应分离参数人工调节偏差）", "P-5（聚合质量在线感知不足）"]
+    supporting_factors: ["高价值产品收率", "聚酯优等品率"]
+    value_contribution: "成本降低（原料转化损失）——收率+0.5-2个百分点、优等品率提升直接减少可兑现价差损失"
+  - id: "BP-3"
+    name: "关键大机组以事后维修为主，非计划停车与维修成本冲击重资产利润"
+    member_pains: ["P-7（大机组故障缺早期预警）"]
+    supporting_factors: ["非计划停车时长", "关键机组故障率"]
+    value_contribution: "成本降低（设备可靠性）——单次非计划停车损失千万级，重资产对开工率高度敏感"
+
+strategic_background_notes:
+  - pain_ref: "P-10（能碳未协同优化）"
+    reason: "可验证性<6，缺碳排放台账与碳价口径"
+    promote_trigger: "补齐碳排放台账、能源结构与碳价口径后升入主叙事（对应场景 SC-7 现列潜在价值池）"
+  - pain_ref: "P-9（碳排放核算缺实时监测）"
+    reason: "可验证性<6，缺装置级实时碳监测基线"
+    promote_trigger: "部署装置级碳监测并建立基线后升入主叙事"
+
+gates:
+  business_problem_oriented: "pass（3个大痛点均为'经营问题+价值空间'句式，非技术模块，无'缺XX系统'）"
+  traceability: "pass（每个大痛点可追到≥1核心痛点+支撑影响因子）"
+  serves_decision: "pass（每个大痛点对应一次投入取舍：能效/收率质量/设备可靠性）"
+
+status: "complete"
+# @AI_GENERATED: end

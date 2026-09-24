@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "local-image-reader": {
+      "command": "C:\\Program Files\\Python313\\python.exe",
+      "args": [
+        "d:\\eng_files\\envision_consulting_skill\\envision_consulting_skill\\deliverable-tools\\image-mcp\\image_server.py"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": ["read_image", "list_images"]
+    }
+  }
+}

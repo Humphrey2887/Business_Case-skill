@@ -1,0 +1,79 @@
+# @AI_GENERATED
+step: "05-pain-point"
+mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本"
+
+refined_pains:
+  - pain_ref: "P-1（收率寻优依赖人工经验）"
+    affected_factors: ["综合商品收率", "高价值化工品收率", "原料综合单耗"]
+    business_context: "炼化装置日常操作与工艺优化环节"
+    kpi_degradation: "综合商品收率与高价值收率难以稳定逼近最优、随工况波动"
+    refined_statement: "在炼化装置日常操作与工艺优化中，由于收率寻优依赖操作人员经验与离线优化、无法对海量运行变量做全流程实时寻优，导致综合商品收率与高价值化工品收率长期低于可达最优且波动，进而在最大成本项（原料）上持续多耗，抬高单位加工成本"
+    outcome_type: "成本降低"
+    business_consequence: "综合/高价值收率长期低于最优约0.5~1pct（示意·待回填），经海量产能放大后对应年化数亿级原料成本损失"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-2（全链排产协同不足）"
+    affected_factors: ["综合商品收率", "高价值化工品收率", "原料综合单耗"]
+    business_context: "炼化-PTA-聚酯全链计划与排产环节"
+    kpi_degradation: "跨装置协同滞后、中间物料损耗与收率损失"
+    refined_statement: "在炼化-PTA-聚酯全链计划与排产中，由于排产依赖人工、跨装置协同滞后且难以对全链价差与库存做整体寻优，导致中间物料损耗与收率损失，一体化协同红利未充分兑现，进而抬高全链单位加工成本"
+    outcome_type: "成本降低"
+    business_consequence: "全链协同损失使一体化规模优势打折，收率与库存损失对应年化可观成本（示意·待回填）"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-3（原油掺炼与采购择时靠经验）"
+    affected_factors: ["原油综合采购单价差", "重质劣质原油掺炼比例", "原料综合单耗"]
+    business_context: "原油采购与调合掺炼环节"
+    kpi_degradation: "采购成本与掺炼经济性未最优"
+    refined_statement: "在原油采购与调合掺炼中，由于配比与择时依赖经验、对原油劣质化与价差窗口适应不足，导致采购单价与掺炼经济性未达最优，进而使占成本约80%~85%的最大成本项优化空间持续流失"
+    outcome_type: "成本降低"
+    business_consequence: "最大成本项（原料约80%~85%）上每单位价差改善绝对值巨大，经验驱动下该空间未被充分捕捉（示意·待回填）"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-4（用能调控与公用工程未全局寻优）"
+    affected_factors: ["单位综合能耗", "蒸汽电综合单耗指数"]
+    business_context: "公用工程与能源调度环节"
+    kpi_degradation: "单位综合能耗偏高、蒸汽电热失衡"
+    refined_statement: "在公用工程与能源调度中，由于蒸汽/电/热平衡依赖人工经验、缺乏全局协同寻优，导致单位综合能耗持续偏高，进而抬高单位能源成本并加大能耗双控压力"
+    outcome_type: "成本降低"
+    business_consequence: "单位综合能耗偏离最优1~3%（示意·待回填），对应能源成本与碳成本上升"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-5（装置能效漂移难及时发现）"
+    affected_factors: ["单位综合能耗", "蒸汽电综合单耗指数", "设备综合效率OEE", "化纤断头率"]
+    business_context: "装置运行监控与能效管理环节"
+    kpi_degradation: "能效漂移、产出与质量波动难及时识别"
+    refined_statement: "在装置运行监控与能效管理中，由于操作参数非最优、能效漂移缺乏在线识别与归因，导致能耗与产出/质量效率波动被延迟发现，进而累积隐性能耗与质量损失，抬高综合运营成本"
+    outcome_type: "运营效率"
+    business_consequence: "能效漂移与效率波动累积隐性成本，长期侵蚀现金成本竞争力（示意·待回填）"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-6（设备故障缺早期预警）"
+    affected_factors: ["非计划停机时长", "设备综合效率OEE"]
+    business_context: "关键转动/换热设备运维环节"
+    kpi_degradation: "非计划停机与维修成本偏高"
+    refined_statement: "在关键转动/换热设备运维中，由于以定期检修与事后维修为主、缺乏基于运行数据的早期故障预警，导致非计划停机与维修成本偏高，进而在重资产大装置上造成产量损失与安全风险，单次停机损失巨大"
+    outcome_type: "风险损失"
+    business_consequence: "大装置单次非计划停机损失巨大，年化停机损失可观（示意·待回填）"
+    anti_pattern_ok: true
+    merged_from: []
+  - pain_ref: "P-7（质量波动反馈滞后）"
+    affected_factors: ["产品一次合格率", "化纤断头率"]
+    business_context: "聚酯/新材料质量控制环节"
+    kpi_degradation: "一次合格率不稳、返工降级报废增加"
+    refined_statement: "在聚酯/新材料质量控制中，由于质量以离线抽检为主、工艺参数反馈滞后，导致一次合格率不稳定、返工降级报废增加，进而在薄利环节持续侵蚀现金流"
+    outcome_type: "成本降低"
+    business_consequence: "一次合格率波动使返工降级报废增加，侵蚀薄利环节现金流（示意·待回填）"
+    anti_pattern_ok: true
+    merged_from: []
+
+gates:
+  anti_pattern: "pass（全部以'依赖人工经验/协同不足/反馈滞后/缺早期预警'等根因表达，无'缺XX系统/平台'缺药式表述）"
+  causal_closure: "pass（每条指向七类经营结果之一：成本降低/运营效率/风险损失，落到具体经营代价）"
+  id_consistency: "pass（沿用03 pain_library的P-1~P-7，未新建，引用带中文名）"
+
+data_gaps:
+  - "各痛点业务代价的具体金额待客户运营与财务数据回填以校准量级"
+
+status: "complete"
+# @AI_GENERATED: end

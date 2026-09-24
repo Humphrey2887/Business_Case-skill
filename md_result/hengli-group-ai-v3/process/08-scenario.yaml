@@ -1,0 +1,115 @@
+# @AI_GENERATED
+step: "08-scenario"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性（cost_down）"
+length: "10min+"
+scenario_count_target: "6-8"
+
+scenarios:
+  - id: "SC-1"
+    from_value_tree: true
+    name: "AI 装置能耗实时寻优（APC/RTO）"
+    linked_big_pain: "BP-1"
+    linked_pains: ["P-1（装置工况寻优依赖人工经验）", "P-2（全厂能量协同调度不足）", "P-3（换热网络效率衰减识别滞后）"]
+    impact_factors: ["单位产品综合能耗"]
+    key_indicators:
+      - { indicator: "单位产品综合能耗", unit: "kgce/吨", source_factor_id: "KF-1" }
+    ai_mechanism: "以 DCS 工艺参数+负荷曲线+能耗数据建模 → 识别偏离最优工况的模式 → 实时寻优推荐操作设定值 → 闭环下发 APC 执行"
+    business_action: "APC/RTO 按最优工况自动调整操作参数"
+    closed_loop: ["能耗与工况预测", "寻优决策", "参数下发执行", "效果反馈再优化"]
+    feasibility: { controllability: true, data_availability: true, optimization_space: true, closed_loop: true, value_quantifiable: true }
+    value_status: "ready"
+  - id: "SC-2"
+    from_value_tree: true
+    name: "全厂蒸汽-电-热能量平衡 AI 调度"
+    linked_big_pain: "BP-1"
+    linked_pains: ["P-2（全厂能量协同调度不足）", "P-3（换热网络效率衰减识别滞后）"]
+    impact_factors: ["蒸汽管网损失率"]
+    key_indicators: []
+    ai_mechanism: "以全厂产汽/用汽/发电/供热数据建模 → 识别梯级利用与放散损失 → 预测负荷优化蒸汽等级分配与机组组合 → 闭环能源调度"
+    business_action: "全厂能量平衡与机组组合优化调度"
+    closed_loop: ["负荷预测", "能量平衡优化", "调度指令", "反馈"]
+    feasibility: { controllability: true, data_availability: false, optimization_space: true, closed_loop: true, value_quantifiable: false }
+    value_status: "to_verify"
+  - id: "SC-3"
+    from_value_tree: true
+    name: "AI 收率优化与工艺参数自寻优"
+    linked_big_pain: "BP-2"
+    linked_pains: ["P-4（反应分离参数人工调节偏差）", "P-1（装置工况寻优依赖人工经验）"]
+    impact_factors: ["高价值产品收率"]
+    key_indicators:
+      - { indicator: "高价值产品收率", unit: "%", source_factor_id: "KF-2" }
+    ai_mechanism: "以进料性质+反应/分离参数+产品分布数据建模 → 识别收率损失来源 → 预测寻优最优参数 → 闭环推荐操作参数"
+    business_action: "按最优参数调整反应/分离操作"
+    closed_loop: ["产品分布预测", "收率寻优", "参数执行", "反馈"]
+    feasibility: { controllability: true, data_availability: true, optimization_space: true, closed_loop: true, value_quantifiable: true }
+    value_status: "ready"
+  - id: "SC-4"
+    from_value_tree: true
+    name: "聚酯质量在线预测与优等品率提升"
+    linked_big_pain: "BP-2"
+    linked_pains: ["P-5（聚合质量在线感知不足）"]
+    impact_factors: ["聚酯优等品率"]
+    key_indicators:
+      - { indicator: "聚酯优等品率", unit: "%", source_factor_id: "KF-3" }
+    ai_mechanism: "以聚合工艺参数+在线光谱/黏度数据建模 → 软测量实时预测质量指标 → 预警质量偏移并推荐纠偏 → 闭环稳定质量"
+    business_action: "质量偏移前提前纠偏工艺参数"
+    closed_loop: ["质量软测量", "偏移预警", "参数纠偏", "反馈"]
+    feasibility: { controllability: true, data_availability: true, optimization_space: true, closed_loop: true, value_quantifiable: true }
+    value_status: "ready"
+  - id: "SC-5"
+    from_value_tree: true
+    name: "AI 智能排产与牌号切换优化"
+    linked_big_pain: "BP-2"
+    linked_pains: ["P-6（排产与牌号切换靠经验）"]
+    impact_factors: ["牌号切换损失量"]
+    key_indicators: []
+    ai_mechanism: "以订单+产能+切换代价数据建模 → 识别最优排产序列与切换时机 → 优化降低切换次数与过渡料 → 闭环到排产计划"
+    business_action: "按优化序列排产、择时切换牌号"
+    closed_loop: ["需求与产能预测", "排产优化", "计划下发", "反馈"]
+    feasibility: { controllability: true, data_availability: false, optimization_space: true, closed_loop: true, value_quantifiable: false }
+    value_status: "to_verify"
+  - id: "SC-6"
+    from_value_tree: true
+    name: "大机组预测性维护与设备健康管理"
+    linked_big_pain: "BP-3"
+    linked_pains: ["P-7（大机组故障缺早期预警）", "P-8（检修计划非按状态优化）"]
+    impact_factors: ["非计划停车时长", "关键机组故障率"]
+    key_indicators:
+      - { indicator: "非计划停车时长", unit: "小时/年", source_factor_id: "KF-4" }
+    ai_mechanism: "以振动/温度/工艺参数时序数据建模 → 识别大机组早期故障特征 → 预测剩余寿命与故障概率 → 闭环到按状态检修"
+    business_action: "按健康状态编排检修、提前处置隐患"
+    closed_loop: ["健康状态监测", "故障预测", "按状态检修决策", "反馈"]
+    feasibility: { controllability: true, data_availability: true, optimization_space: true, closed_loop: true, value_quantifiable: true }
+    value_status: "ready"
+  - id: "SC-7"
+    from_value_tree: true
+    name: "AI 能碳协同优化与碳资产管理"
+    linked_big_pain: "BP-3"
+    linked_pains: ["P-10（能碳未协同优化）", "P-9（碳排放核算缺实时监测）"]
+    impact_factors: ["单位产品碳排放强度", "余热余压回收率"]
+    key_indicators:
+      - { indicator: "单位产品碳排放强度", unit: "tCO2/吨", source_factor_id: "KF-5" }
+    ai_mechanism: "以能耗+碳排放+余能+电价/碳价数据建模 → 识别能碳联合最优点 → 预测优化能源结构/余能回收/生产节奏 → 闭环能碳调度与配额管理"
+    business_action: "能碳统一优化调度、碳配额管理"
+    closed_loop: ["能碳数据采集", "联合寻优", "调度执行", "碳资产核算反馈"]
+    feasibility: { controllability: true, data_availability: true, optimization_space: true, closed_loop: true, value_quantifiable: true }
+    value_status: "ready"
+
+excluded_scenarios:
+  - scenario: "AI 优化原油/PX 采购价格本身"
+    handling: "excluded"
+    reason: "原料价格由国际市场决定、非客户可控"
+    methodology_category: "客户可控性弱 / 市场机制不可控"
+  - scenario: "AI 预测产品售价以提高售价"
+    handling: "excluded"
+    reason: "产品售价由市场供需决定，AI 不改变市场定价"
+    methodology_category: "客户决策权不足 / 市场机制不可控"
+
+gates:
+  feasibility_summary: "7场景过5门槛；SC-2/SC-5 因所需数据（蒸汽平衡/切换损失基线）暂不可得，价值可量化未通过→列 to_verify"
+  count_check: "保留7个关键场景，符合10min+目标(6-8)"
+  scenario_id_writeback: "沿用03 scenario_id（SC-1..SC-7），未另起编号"
+  key_indicator_alignment: "5个ready场景各1个关键指标，一一对应价值树 high 关键影响因子(KF-1..KF-5)，名称/单位一致，标 source_factor_id；SC-2/SC-5 为 to_verify 框架、其影响因子为 mid，暂不设关键指标"
+
+status: "complete"
+# @AI_GENERATED: end

@@ -1,0 +1,191 @@
+# @AI_GENERATED
+step: "09-valuation"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性（cost_down）"
+length: "10min+"
+
+honesty_note: "本次无客户企业真实基线，全部测算以恒力石化(600346)公开披露产量/营收规模为锚、结合行业公开改善区间做示意测算；baseline_tier 一律为 industry 或 assumption，估算值均标'示意/参考同业/待企业数据校准'。全集团（含未上市炼化/织造/康辉新材）规模数倍于600346，实际潜力更大，此处按上市主体口径保守示意。"
+
+valuations:
+  - scenario_id: "SC-1"
+    name: "AI 装置能耗实时寻优（APC/RTO）"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "恒力石化600346口径（示意）"
+    period: "元/年"
+    impact_factor: "单位产品综合能耗（kgce/吨）"
+    baseline: "能源成本基准约152亿元/年（=营业成本约1900亿×能源占比约8%，行业估算）"
+    baseline_tier: "industry"
+    baseline_source: "600346营业成本规模 + 行业能源占成本6-10%（industry_public）"
+    key_indicators:
+      - { factor: "单位产品综合能耗", unit: "kgce/吨", source_factor_id: "KF-1" }
+    assumptions:
+      - { param: "可改善比例", value: "1%-3%", data_type: "industry_public", note: "APC/RTO 综合能耗改善行业区间" }
+      - { param: "可兑现比例", value: "60%-80%", data_type: "internal_assumption", note: "扣除执行/工况约束" }
+    ai_mechanism: "DCS参数+负荷+能耗建模 → 识别偏离最优工况 → 实时寻优 → APC闭环执行"
+    closed_loop: ["能耗与工况预测", "寻优决策", "参数下发", "反馈"]
+    formula: "能源成本基准 × 可改善比例 × 可兑现比例"
+    scenarios_band: { conservative: "0.9亿元/年", neutral: "2.1亿元/年", optimistic: "3.6亿元/年" }
+    estimated_value: "0.9亿-3.6亿元/年（示意）"
+    value_status: "ready"
+    result_type: "quantified"
+    counts_in_rollup: true
+
+  - scenario_id: "SC-3"
+    name: "AI 收率优化与工艺参数自寻优"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "炼化板块600346口径（示意）"
+    period: "元/年"
+    impact_factor: "高价值产品收率（%）"
+    baseline: "炼化板块营收约870亿元/年（2026Q1×4 年化）"
+    baseline_tier: "industry"
+    baseline_source: "600346炼化季度营收216.84亿×4（company_public）+ 收率价差行业区间"
+    key_indicators:
+      - { factor: "高价值产品收率", unit: "%", source_factor_id: "KF-2" }
+    assumptions:
+      - { param: "可兑现价差率", value: "0.3%-0.8% of 炼化营收", data_type: "internal_assumption", note: "收率+0.5-1.5个百分点转化为可兑现价差" }
+    ai_mechanism: "进料+反应/分离参数+产品分布建模 → 识别收率损失 → 寻优参数 → 闭环执行"
+    closed_loop: ["产品分布预测", "收率寻优", "参数执行", "反馈"]
+    formula: "炼化营收基准 × 可兑现价差率"
+    scenarios_band: { conservative: "2.0亿元/年", neutral: "3.5亿元/年", optimistic: "5.0亿元/年" }
+    estimated_value: "2.0亿-5.0亿元/年（示意）"
+    value_status: "ready"
+    result_type: "quantified"
+    counts_in_rollup: true
+
+  - scenario_id: "SC-4"
+    name: "聚酯质量在线预测与优等品率提升"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "聚酯/新材料板块600346口径（示意）"
+    period: "元/年"
+    impact_factor: "聚酯优等品率（%）"
+    baseline: "新材料板块营收约390亿元/年（2026Q1×4 年化）；降级损失约占产值1%-2%"
+    baseline_tier: "assumption"
+    baseline_source: "600346新材料季度营收97.76亿×4（company_public）+ 降级损失假设"
+    key_indicators:
+      - { factor: "聚酯优等品率", unit: "%", source_factor_id: "KF-3" }
+    assumptions:
+      - { param: "降级损失占产值", value: "1%-2%", data_type: "internal_assumption", note: "示意" }
+      - { param: "可改善比例", value: "25%-40%", data_type: "industry_public", note: "在线质量优化改善区间" }
+    ai_mechanism: "聚合参数+在线光谱/黏度建模 → 软测量预测质量 → 预警纠偏 → 闭环稳定质量"
+    closed_loop: ["质量软测量", "偏移预警", "参数纠偏", "反馈"]
+    formula: "新材料营收 × 降级损失占比 × 可改善比例"
+    scenarios_band: { conservative: "1.0亿元/年", neutral: "1.8亿元/年", optimistic: "3.1亿元/年" }
+    estimated_value: "1.0亿-3.1亿元/年（示意）"
+    value_status: "ready"
+    result_type: "quantified"
+    counts_in_rollup: true
+
+  - scenario_id: "SC-6"
+    name: "大机组预测性维护与设备健康管理"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "全厂大机组600346口径（示意）"
+    period: "元/年"
+    impact_factor: "非计划停车时长（小时/年）"
+    baseline: "非计划停车损失+维修成本基准（待企业回填；单次停车损失千万级，行业通识）"
+    baseline_tier: "assumption"
+    baseline_source: "重资产装置停车损失行业通识 + 假设"
+    key_indicators:
+      - { factor: "非计划停车时长", unit: "小时/年", source_factor_id: "KF-4" }
+    assumptions:
+      - { param: "非计划停车损失降低", value: "20%-40%", data_type: "industry_public", note: "预测性维护行业改善区间" }
+      - { param: "维修成本降低", value: "5%-15%", data_type: "internal_assumption", note: "按状态检修" }
+    ai_mechanism: "振动/温度/工艺时序建模 → 识别早期故障 → 预测寿命/故障概率 → 按状态检修闭环"
+    closed_loop: ["健康监测", "故障预测", "按状态检修", "反馈"]
+    formula: "(停车损失基准 × 降低比例) + (维修成本基准 × 降低比例)"
+    scenarios_band: { conservative: "1.0亿元/年", neutral: "2.0亿元/年", optimistic: "3.0亿元/年" }
+    estimated_value: "1.0亿-3.0亿元/年（示意）"
+    value_status: "ready"
+    result_type: "quantified"
+    counts_in_rollup: true
+
+  - scenario_id: "SC-7"
+    name: "AI 能碳协同优化与碳资产管理"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "集团能碳600346口径（示意）"
+    period: "元/年"
+    impact_factor: "单位产品碳排放强度（tCO2/吨）"
+    baseline: "能源+碳成本基准（待企业回填碳排放台账与碳价口径）"
+    baseline_tier: "assumption"
+    baseline_source: "能源成本基准 + 碳价口径假设"
+    key_indicators:
+      - { factor: "单位产品碳排放强度", unit: "tCO2/吨", source_factor_id: "KF-5" }
+    assumptions:
+      - { param: "能碳协同额外节约", value: "0.5%-1.5% of 能源成本", data_type: "internal_assumption", note: "在SC-1基础上的协同增益，示意" }
+      - { param: "碳成本优化", value: "待碳价口径确认", data_type: "internal_assumption", note: "待回填" }
+    ai_mechanism: "能耗+碳排+余能+电价/碳价建模 → 识别能碳联合最优 → 优化能源结构/余能/节奏 → 能碳调度闭环"
+    closed_loop: ["能碳采集", "联合寻优", "调度执行", "碳核算反馈"]
+    formula: "能源成本基准 × 能碳协同节约比例 + 碳成本优化"
+    scenarios_band: { conservative: "1.0亿元/年", neutral: "2.0亿元/年", optimistic: "3.0亿元/年" }
+    estimated_value: "1.0亿-3.0亿元/年（示意）"
+    value_status: "ready"
+    result_type: "quantified"
+    counts_in_rollup: true
+
+  - scenario_id: "SC-2"
+    name: "全厂蒸汽-电-热能量平衡 AI 调度"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "全厂公用工程"
+    period: "元/年"
+    impact_factor: "蒸汽管网损失率（%）"
+    baseline: "待调研（缺全厂蒸汽/电/热平衡与管网损失基线）"
+    baseline_tier: "assumption"
+    baseline_source: "待企业回填"
+    key_indicators: []
+    assumptions:
+      - { param: "管网损失可降低比例", value: "待回填", data_type: "internal_assumption", note: "缺基线" }
+    ai_mechanism: "全厂能量数据建模 → 识别放散损失 → 优化蒸汽等级分配与机组组合 → 调度闭环"
+    closed_loop: ["负荷预测", "能量平衡优化", "调度指令", "反馈"]
+    formula: "蒸汽/能源成本基准 × 管网损失可降低比例"
+    estimated_value: ""
+    value_status: "to_verify"
+    result_type: "framework_only"
+    counts_in_rollup: false
+    to_confirm: ["全厂蒸汽/电/热平衡与管网损失率基线（数据源：公用工程能量平衡台账）"]
+    promotable_to_ready: "回填管网损失基线后可量化并计入总额"
+
+  - scenario_id: "SC-5"
+    name: "AI 智能排产与牌号切换优化"
+    caliber: "cost_saving"
+    unit: "亿元/年"
+    scope: "聚酯/新材料排产"
+    period: "元/年"
+    impact_factor: "牌号切换损失量（吨/次）"
+    baseline: "待调研（缺牌号切换过渡料损失基线）"
+    baseline_tier: "assumption"
+    baseline_source: "待企业回填"
+    key_indicators: []
+    assumptions:
+      - { param: "切换损失可降低比例", value: "待回填", data_type: "internal_assumption", note: "缺基线" }
+    ai_mechanism: "订单+产能+切换代价建模 → 优化排产序列与切换时机 → 计划闭环"
+    closed_loop: ["需求产能预测", "排产优化", "计划下发", "反馈"]
+    formula: "切换损失基准 × 可降低比例"
+    estimated_value: ""
+    value_status: "to_verify"
+    result_type: "framework_only"
+    counts_in_rollup: false
+    to_confirm: ["牌号切换过渡料损失量基线（数据源：MES/排产系统）"]
+    promotable_to_ready: "回填切换损失基线后可量化并计入总额"
+
+rollup:
+  business_case_value:
+    scenarios: ["SC-1", "SC-3", "SC-4", "SC-6", "SC-7"]
+    conservative: "约5.9亿元/年"
+    neutral: "约11.4亿元/年"
+    optimistic: "约17.7亿元/年"
+    caliber: "cost_saving（成本节约，示意，基于行业基准/假设，待企业数据校准）"
+  potential_pool:
+    scenarios: ["SC-2", "SC-5"]
+    note: "缺 baseline（蒸汽平衡/牌号切换损失），回填后可计入总额"
+
+data_gaps:
+  - "5个计入总额场景的基线为行业估算/假设，需客户装置级企业基准校准（能源成本、炼化收率、优等品率、停车损失、碳排放/碳价）"
+  - "2个潜在池场景待补基线（蒸汽管网损失率、牌号切换损失量）"
+  - "全集团口径（含未上市业务）营业成本/能源/碳台账待补，用于从600346口径放大到全集团"
+
+status: "complete"
+# @AI_GENERATED: end

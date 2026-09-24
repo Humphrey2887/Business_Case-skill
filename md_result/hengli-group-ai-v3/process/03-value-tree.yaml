@@ -1,0 +1,250 @@
+# @AI_GENERATED
+step: "03-value-tree"
+industry: "炼化—化纤全产业链"
+client: "恒力集团"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性，以 AI 系统性压降单位产品原料转化+能源综合成本、提升重资产装置稳定运行与资产利用效率"
+value_direction: "cost_down"
+value_tree_mode: "single_cost_tree"
+
+trees:
+  - tree_id: "T-cost-1"
+    tree_type: "cost_saving"
+    integrated_goal: "降低单位产品综合加工成本（元/吨）"
+    root_equation: "单位产品综合加工成本节约 = 能源成本节约 + 原料转化损失成本节约 + 设备可靠性成本节约 + 碳履约与环保成本节约"
+    classification_basis: "可控加工成本科目"
+    classification_rationale: "原料采购价与产品售价由市场决定、非 AI 可控；AI 可控杠杆集中在装置运行侧的四类可控加工成本科目（能源、原料转化损失、设备可靠性、碳/环保），四者 MECE 且合计构成'单位综合加工成本'这一综合目标，口径单一均为成本节约"
+    mece_check:
+      collectively_exhaustive: "四类科目覆盖装置运行侧全部可控加工成本，合计构成单位综合加工成本"
+      mutually_exclusive: "能源=能耗×能价；原料转化=收率/降级损失；设备=停车/维修；碳环保=碳成本/环保处置；互不重叠（公用工程能源并入能源科目，不单列以避免与能源重复）"
+      no_mixed_basis: true
+
+    pain_library:
+      - pain_id: "P-1"
+        pain_name: "装置工况寻优依赖人工经验"
+        pain_statement: "由于炼化/聚酯装置操作参数长期依赖班组人工经验、缺乏对最优工况的实时寻优，导致单位综合能耗与高价值收率无法稳定逼近最优点"
+        affected_factors: ["单位产品综合能耗", "高价值产品收率"]
+      - pain_id: "P-2"
+        pain_name: "全厂能量协同调度不足"
+        pain_statement: "由于蒸汽/电/热多装置间的能量平衡与梯级利用靠人工调度、缺乏全局协同优化，导致管网损失与低效放散"
+        affected_factors: ["单位产品综合能耗", "蒸汽管网损失率"]
+      - pain_id: "P-3"
+        pain_name: "换热网络效率衰减识别滞后"
+        pain_statement: "由于换热网络结垢/效率衰减缺乏在线识别与清洗时机优化，导致能耗抬升被延迟发现"
+        affected_factors: ["单位产品综合能耗", "蒸汽管网损失率"]
+      - pain_id: "P-4"
+        pain_name: "反应分离参数人工调节偏差"
+        pain_statement: "由于反应/分离关键操作参数依赖人工调节、对原料波动响应慢，导致高价值产品收率波动、原料转化损失偏高"
+        affected_factors: ["高价值产品收率"]
+      - pain_id: "P-5"
+        pain_name: "聚合质量在线感知不足"
+        pain_statement: "由于聚酯聚合过程质量指标缺乏在线预测、依赖离线化验滞后反馈，导致优等品率波动、降级损失偏高"
+        affected_factors: ["聚酯优等品率"]
+      - pain_id: "P-6"
+        pain_name: "排产与牌号切换靠经验"
+        pain_statement: "由于多牌号排产与切换时机依赖人工经验、缺乏优化，导致切换过渡料损失与非稳态能耗偏高"
+        affected_factors: ["牌号切换损失量"]
+      - pain_id: "P-7"
+        pain_name: "大机组故障缺早期预警"
+        pain_statement: "由于压缩机/泵等关键大机组以事后维修/固定周期检修为主、缺乏基于状态的早期故障预警，导致非计划停车与损失"
+        affected_factors: ["非计划停车时长", "关键机组故障率"]
+      - pain_id: "P-8"
+        pain_name: "检修计划非按状态优化"
+        pain_statement: "由于检修计划按固定周期而非设备真实健康状态编排，导致过度检修或延误检修，抬高停车与维修成本"
+        affected_factors: ["非计划停车时长"]
+      - pain_id: "P-9"
+        pain_name: "碳排放核算缺实时监测"
+        pain_statement: "由于碳排放以人工事后核算为主、缺乏装置级实时监测与优化，导致碳强度改善与配额管理滞后"
+        affected_factors: ["单位产品碳排放强度"]
+      - pain_id: "P-10"
+        pain_name: "能碳未协同优化"
+        pain_statement: "由于能效优化与碳排放/余热余压回收分开管理、未纳入统一优化目标，导致低碳与低成本无法同时逼近最优"
+        affected_factors: ["单位产品碳排放强度", "余热余压回收率"]
+
+    branches:
+      - cost_or_revenue_type: "能源成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "能源成本节约"
+            operator_logic: "能源成本节约 = 单位产品综合能耗下降(kgce/吨) × 单位能源价格(元/kgce)"
+            key_levers:
+              - lever: "装置能耗实时寻优（APC/RTO 先进过程控制与实时优化）"
+                impact_factors:
+                  - factor: "单位产品综合能耗"
+                    unit: "kgce/吨"
+                    data_source: "DCS/实时数据库、能源管理系统（待确认口径）"
+                    data_gap: "缺装置级单位能耗基线"
+                    pain_contributions:
+                      - { pain_ref: "P-1（装置工况寻优依赖人工经验）", pain_weight: 55, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-2（全厂能量协同调度不足）", pain_weight: 25, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-3（换热网络效率衰减识别滞后）", pain_weight: 20, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "55+25+20=100" }
+                    scenarios:
+                      - scenario_id: "SC-1"
+                        name: "AI 装置能耗实时寻优（APC/RTO）"
+                        ai_mechanism: "以 DCS 工艺参数+负荷曲线+能耗数据建模 → 识别装置偏离最优工况的模式 → 实时推荐操作参数设定值/优化目标 → 闭环下发至 APC 执行，稳定逼近最低能耗工况"
+                        linked_pains: ["P-1（装置工况寻优依赖人工经验）", "P-2（全厂能量协同调度不足）", "P-3（换热网络效率衰减识别滞后）"]
+                        expected_factor_improvement: "单位综合能耗下降（示意 1-3%）"
+                        merge_reason: ""
+              - lever: "全厂蒸汽-电-热能量平衡优化"
+                impact_factors:
+                  - factor: "蒸汽管网损失率"
+                    unit: "%"
+                    data_source: "公用工程能量平衡台账（待确认）"
+                    data_gap: "缺蒸汽/电/热平衡与管网损失基线"
+                    pain_contributions:
+                      - { pain_ref: "P-2（全厂能量协同调度不足）", pain_weight: 65, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-3（换热网络效率衰减识别滞后）", pain_weight: 35, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "65+35=100" }
+                    scenarios:
+                      - scenario_id: "SC-2"
+                        name: "全厂蒸汽-电-热能量平衡 AI 调度"
+                        ai_mechanism: "以全厂产汽/用汽/发电/供热数据建模 → 识别能量梯级利用与放散损失 → 预测负荷并优化蒸汽等级分配与机组组合 → 闭环到能源调度指令，降低管网损失"
+                        linked_pains: ["P-2（全厂能量协同调度不足）", "P-3（换热网络效率衰减识别滞后）"]
+                        expected_factor_improvement: "蒸汽管网损失率下降（示意）"
+                        merge_reason: ""
+
+      - cost_or_revenue_type: "原料转化损失成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "原料转化损失成本节约"
+            operator_logic: "原料转化损失成本节约 = 收率损失下降[=(最优收率−实际收率)×投料量×产品价差] + 降级/次品损失下降[=(1−优等品率)×产量×降级价差] + 牌号切换过渡料损失下降"
+            key_levers:
+              - lever: "炼化收率优化与工艺参数自寻优"
+                impact_factors:
+                  - factor: "高价值产品收率"
+                    unit: "%"
+                    data_source: "LIMS/DCS/生产报表（待确认）"
+                    data_gap: "缺装置高价值产品收率基线与最优值"
+                    pain_contributions:
+                      - { pain_ref: "P-4（反应分离参数人工调节偏差）", pain_weight: 70, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-1（装置工况寻优依赖人工经验）", pain_weight: 30, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "70+30=100" }
+                    scenarios:
+                      - scenario_id: "SC-3"
+                        name: "AI 收率优化与工艺参数自寻优"
+                        ai_mechanism: "以进料性质+反应/分离参数+产品分布数据建模 → 识别收率损失来源 → 预测不同参数下的产品分布并寻优 → 闭环推荐操作参数，提升高价值产品收率"
+                        linked_pains: ["P-4（反应分离参数人工调节偏差）", "P-1（装置工况寻优依赖人工经验）"]
+                        expected_factor_improvement: "高价值产品收率提升（示意 0.5-2 个百分点）"
+                        merge_reason: ""
+              - lever: "聚酯质量在线预测与优等品率提升"
+                impact_factors:
+                  - factor: "聚酯优等品率"
+                    unit: "%"
+                    data_source: "聚合 DCS+在线检测+LIMS（待确认）"
+                    data_gap: "缺优等品率基线与降级价差"
+                    pain_contributions:
+                      - { pain_ref: "P-5（聚合质量在线感知不足）", pain_weight: 100, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "单痛点=100" }
+                    scenarios:
+                      - scenario_id: "SC-4"
+                        name: "聚酯质量在线预测与优等品率提升"
+                        ai_mechanism: "以聚合工艺参数+在线光谱/黏度等数据建模 → 实时预测产品质量指标（软测量） → 提前预警质量偏移并推荐参数纠偏 → 闭环稳定质量，提升优等品率"
+                        linked_pains: ["P-5（聚合质量在线感知不足）"]
+                        expected_factor_improvement: "优等品率提升，降级损失下降（示意）"
+                        merge_reason: ""
+              - lever: "智能排产与牌号切换优化"
+                impact_factors:
+                  - factor: "牌号切换损失量"
+                    unit: "吨/次"
+                    data_source: "MES/排产系统（待确认）"
+                    data_gap: "缺切换过渡料损失基线"
+                    pain_contributions:
+                      - { pain_ref: "P-6（排产与牌号切换靠经验）", pain_weight: 100, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "单痛点=100" }
+                    scenarios:
+                      - scenario_id: "SC-5"
+                        name: "AI 智能排产与牌号切换优化"
+                        ai_mechanism: "以订单+产能+牌号切换代价数据建模 → 识别最优排产序列与切换时机 → 优化排产降低切换次数与过渡料 → 闭环到排产计划，降低切换损失与非稳态能耗"
+                        linked_pains: ["P-6（排产与牌号切换靠经验）"]
+                        expected_factor_improvement: "牌号切换损失量下降（示意）"
+                        merge_reason: ""
+
+      - cost_or_revenue_type: "设备可靠性成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "设备可靠性成本节约"
+            operator_logic: "设备可靠性成本节约 = 非计划停车损失下降[=停车时长×单位时间边际贡献损失] + 维修成本下降"
+            key_levers:
+              - lever: "大机组预测性维护与设备健康管理"
+                impact_factors:
+                  - factor: "非计划停车时长"
+                    unit: "小时/年"
+                    data_source: "设备管理系统/振动监测/DCS（待确认）"
+                    data_gap: "缺非计划停车时长与损失基线"
+                    pain_contributions:
+                      - { pain_ref: "P-7（大机组故障缺早期预警）", pain_weight: 70, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-8（检修计划非按状态优化）", pain_weight: 30, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "70+30=100" }
+                    scenarios:
+                      - scenario_id: "SC-6"
+                        name: "大机组预测性维护与设备健康管理"
+                        ai_mechanism: "以振动/温度/工艺参数时序数据建模 → 识别关键大机组早期故障特征 → 预测剩余寿命与故障概率 → 闭环到按状态检修计划，降低非计划停车与维修成本"
+                        linked_pains: ["P-7（大机组故障缺早期预警）", "P-8（检修计划非按状态优化）"]
+                        expected_factor_improvement: "非计划停车时长与故障率下降（示意）"
+                        merge_reason: "两影响因子（停车时长、机组故障率）高度耦合于设备健康，合并为一个综合预测性维护场景"
+                  - factor: "关键机组故障率"
+                    unit: "次/年"
+                    data_source: "设备管理系统（待确认）"
+                    data_gap: "缺关键机组故障率基线"
+                    pain_contributions:
+                      - { pain_ref: "P-7（大机组故障缺早期预警）", pain_weight: 100, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "单痛点=100" }
+                    scenarios:
+                      - scenario_id: "SC-6"
+                        name: "大机组预测性维护与设备健康管理"
+                        ai_mechanism: "同上（合并场景）"
+                        linked_pains: ["P-7（大机组故障缺早期预警）"]
+                        expected_factor_improvement: "关键机组故障率下降（示意）"
+                        merge_reason: "并入 SC-6 综合预测性维护场景"
+
+      - cost_or_revenue_type: "碳履约与环保成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "碳履约与环保成本节约"
+            operator_logic: "碳履约与环保成本节约 = 单位产品碳排放强度下降(tCO2/吨) × 碳价(元/tCO2) × 产量 + 余热余压回收带来的能源/碳成本下降"
+            key_levers:
+              - lever: "AI 能碳协同优化与碳资产管理"
+                impact_factors:
+                  - factor: "单位产品碳排放强度"
+                    unit: "tCO2/吨"
+                    data_source: "能碳管理平台/碳排放台账（待确认）"
+                    data_gap: "缺碳排放台账与能源结构数据"
+                    pain_contributions:
+                      - { pain_ref: "P-10（能碳未协同优化）", pain_weight: 60, weight_basis: "expert_estimate" }
+                      - { pain_ref: "P-9（碳排放核算缺实时监测）", pain_weight: 40, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "60+40=100" }
+                    scenarios:
+                      - scenario_id: "SC-7"
+                        name: "AI 能碳协同优化与碳资产管理"
+                        ai_mechanism: "以能耗+碳排放+余热余压+电价/碳价数据建模 → 识别能碳联合最优点 → 预测并优化能源结构/余能回收/生产节奏 → 闭环到能碳调度与碳配额管理，同时降能耗与碳成本"
+                        linked_pains: ["P-10（能碳未协同优化）", "P-9（碳排放核算缺实时监测）"]
+                        expected_factor_improvement: "单位碳排放强度下降、碳成本下降（示意）"
+                        merge_reason: "能耗与碳排放耦合，合并为能碳协同综合场景"
+                  - factor: "余热余压回收率"
+                    unit: "%"
+                    data_source: "公用工程/余能回收系统（待确认）"
+                    data_gap: "缺余热余压回收基线"
+                    pain_contributions:
+                      - { pain_ref: "P-10（能碳未协同优化）", pain_weight: 100, weight_basis: "expert_estimate" }
+                    pain_weight_check: { sum_to_100: true, note: "单痛点=100" }
+                    scenarios:
+                      - scenario_id: "SC-7"
+                        name: "AI 能碳协同优化与碳资产管理"
+                        ai_mechanism: "同上（合并场景）"
+                        linked_pains: ["P-10（能碳未协同优化）"]
+                        expected_factor_improvement: "余热余压回收率提升（示意）"
+                        merge_reason: "并入 SC-7 能碳协同场景"
+
+gates:
+  tree_mode_match: "pass（single_cost_tree，仅1棵成本树）"
+  caliber_single: "pass（root_equation 左侧全程成本节约口径，未混收益）"
+  classification_basis_stated: "pass（可控加工成本科目，含 rationale，同层未混口径，公用工程能源并入能源科目避免重叠）"
+  mece: "pass（能源/原料转化/设备/碳环保四科目互斥且合计构成综合目标）"
+  operator_logic_present: "pass（每条 value_direction 带 ×/+ 运算符，百分比因子经换算式转金额）"
+  factor_unit_required: "pass（9个影响因子均带单位）"
+  pain_per_factor: "pass（每因子≥1痛点）"
+  pain_weight_sum_100: "pass（各因子 pain_contributions 合计=100%）"
+  ai_scenario_required: "pass（7个 AI 场景均含数据→识别→预测优化→闭环）"
+
+status: "complete"
+# @AI_GENERATED: end

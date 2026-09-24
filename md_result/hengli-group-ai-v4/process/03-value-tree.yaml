@@ -1,0 +1,347 @@
+# @AI_GENERATED
+step: "03-value-tree"
+industry: "炼化一体化 + 聚酯化纤 / 化工新材料"
+client: "恒力集团（Hengli Group）"
+mission_critical: "提升穿越石化周期的盈利韧性与成本竞争力，用AI系统性压降全产业链单位加工成本"
+value_direction: "cost_down"
+value_tree_mode: "single_cost_tree"
+
+trees:
+  - tree_id: "T-cost-1"
+    tree_type: "cost_saving"
+    integrated_goal: "降低全产业链单位加工完全成本"
+    root_equation: "全产业链单位加工完全成本 = 单位原料成本 + 单位能源成本 + 单位维修与非计划停机损失成本 + 单位质量损失成本（+ 人工及折旧等背景项，AI杠杆有限不深入拆解）"
+    classification_basis: "成本科目"
+    classification_rationale: "石化制造成本以原料、能源、设备维修/停机损失、质量损失为主要可控科目，按成本科目拆最贴合财务/管理口径且同层MECE；人工与折旧AI杠杆有限，列为背景项不深入拆解"
+    mece_check:
+      collectively_exhaustive: "四类可控成本科目 + 背景项（人工/折旧）合计构成单位加工完全成本"
+      mutually_exclusive: "四科目互斥：原料=物料消耗价值，能源=公用工程消耗，维修停机=资产可靠性损失，质量损失=返工/降级/报废增量，不重复计价"
+      no_mixed_basis: true
+
+    pain_library:
+      - pain_id: "P-1"
+        pain_name: "收率寻优依赖人工经验"
+        pain_statement: "由于炼化收率优化依赖操作人员经验与离线优化、缺乏全流程实时寻优，导致综合商品收率与高价值化工品收率难以稳定逼近最优，进而抬高单位原料成本"
+        affected_factors: ["综合商品收率", "高价值化工品收率", "原料综合单耗"]
+        business_consequence: "收率长期低于最优约0.5~1pct（示意·待回填），经海量产能放大对应年化数亿级原料成本损失"   # 05回填
+        outcome_type: "成本降低"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 8.5        # 06回填
+        tier: "core"               # 06回填
+      - pain_id: "P-2"
+        pain_name: "全链排产协同不足"
+        pain_statement: "由于炼化-PTA-聚酯全链排产依赖人工、跨装置协同滞后，导致中间物料损耗与收率损失，进而抬高单位原料成本"
+        affected_factors: ["综合商品收率", "高价值化工品收率", "原料综合单耗"]
+        business_consequence: "全链协同损失使一体化规模优势打折（示意·待回填）"   # 05回填
+        outcome_type: "成本降低"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 6.5        # 06回填
+        tier: "strategic_background"  # 06回填（可验证性<6，补数据后可升级）
+      - pain_id: "P-3"
+        pain_name: "原油掺炼与采购择时靠经验"
+        pain_statement: "由于原油调合掺炼与采购择时依赖经验、对原油劣质化适应不足，导致采购成本与掺炼经济性未最优，进而抬高单位原料采购成本"
+        affected_factors: ["原油综合采购单价差", "重质劣质原油掺炼比例", "原料综合单耗"]
+        business_consequence: "最大成本项（原料约80%~85%）优化空间未充分捕捉（示意·待回填）"   # 05回填
+        outcome_type: "成本降低"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 8.1        # 06回填
+        tier: "core"               # 06回填
+      - pain_id: "P-4"
+        pain_name: "用能调控与公用工程未全局寻优"
+        pain_statement: "由于蒸汽/电/热等公用工程平衡依赖人工经验、缺乏全局协同寻优，导致单位综合能耗偏高，进而抬高单位能源成本"
+        affected_factors: ["单位综合能耗", "蒸汽电综合单耗指数"]
+        business_consequence: "单位综合能耗偏离最优1~3%（示意·待回填），能源与碳成本上升"   # 05回填
+        outcome_type: "成本降低"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 7.7        # 06回填
+        tier: "core"               # 06回填
+      - pain_id: "P-5"
+        pain_name: "装置能效漂移难及时发现"
+        pain_statement: "由于装置负荷与操作参数非最优、能效漂移缺乏在线识别，导致能耗与产出效率波动，进而抬高单位能源与运营成本"
+        affected_factors: ["单位综合能耗", "蒸汽电综合单耗指数", "设备综合效率OEE", "化纤断头率"]
+        business_consequence: "能效漂移与效率波动累积隐性成本，长期侵蚀现金成本竞争力（示意·待回填）"   # 05回填
+        outcome_type: "运营效率"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 5.7        # 06回填
+        tier: "strategic_background"  # 06回填（可验证性<6）
+      - pain_id: "P-6"
+        pain_name: "设备故障缺早期预警"
+        pain_statement: "由于转动/换热等关键设备以定期检修与事后维修为主、缺乏早期故障预警，导致非计划停机损失与维修成本偏高，进而抬高单位维修与停机损失成本"
+        affected_factors: ["非计划停机时长", "设备综合效率OEE"]
+        business_consequence: "大装置单次非计划停机损失巨大，年化停机损失可观（示意·待回填）"   # 05回填
+        outcome_type: "风险损失"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 6.8        # 06回填
+        tier: "core"               # 06回填
+      - pain_id: "P-7"
+        pain_name: "质量波动反馈滞后"
+        pain_statement: "由于产品质量以离线抽检为主、工艺参数反馈滞后，导致一次合格率不稳、返工降级报废增加，进而抬高单位质量损失成本"
+        affected_factors: ["产品一次合格率", "化纤断头率"]
+        business_consequence: "一次合格率波动使返工降级报废增加，侵蚀薄利环节现金流（示意·待回填）"   # 05回填
+        outcome_type: "成本降低"   # 05回填
+        anti_pattern_ok: true      # 05回填
+        priority_score: 6.4        # 06回填
+        tier: "core"               # 06回填
+
+    branches:
+      - cost_or_revenue_type: "单位原料成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "单位产品原料成本降低（降单耗）"
+            operator_logic: "单位产品原料成本 = 单位原料价格 × 单位产品原料消耗；本方向经 综合商品收率提升 ＋ 全链排产协同优化 降低单位产品原料消耗"
+            key_levers:
+              - lever: "提升炼化转化收率与减油增化高价值收率"
+                impact_factors:
+                  - factor: "综合商品收率"
+                    unit: "%"
+                    data_source: "DCS/LIMS/生产MES（待确认）"
+                    data_gap: "缺客户实际收率基线"
+                    pain_contributions:
+                      - pain_ref: "P-1（收率寻优依赖人工经验）"
+                        pain_weight: 50
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-2（全链排产协同不足）"
+                        pain_weight: 30
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-3（原油掺炼与采购择时靠经验）"
+                        pain_weight: 20
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "50+30+20=100"
+                    scenarios:
+                      - scenario_id: "SC-1"
+                        name: "AI 收率优化与全流程实时寻优"
+                        ai_mechanism: "以原料性质、装置运行参数、产品分布与历史收率数据建模 → 识别收率损失模式与最优操作窗口 → 实时预测并推荐操作参数 → 闭环下发到DCS/操作指导，稳定逼近最优收率"
+                        linked_pains: ["P-1（收率寻优依赖人工经验）"]
+                        expected_factor_improvement: "综合商品收率 +0.5~1pct（示意·待回填）"
+                        merge_reason: ""
+                  - lever: "全链排产与原料优化协同"
+                    impact_factors: []
+              - direction: "高价值化工品收率提升（减油增化）"
+                operator_logic: "高价值产品单位原料成本 = 单位原料 ÷ 高价值化工品收率；本方向经 提升高价值化工品收率 降低其单位原料成本"
+                key_levers:
+                  - lever: "全链排产与减油增化结构优化"
+                    impact_factors:
+                      - factor: "高价值化工品收率"
+                        unit: "%"
+                        data_source: "生产MES/计划系统（待确认）"
+                        data_gap: "缺高价值产品收率基线"
+                        pain_contributions:
+                          - pain_ref: "P-1（收率寻优依赖人工经验）"
+                            pain_weight: 60
+                            weight_basis: "expert_estimate"
+                          - pain_ref: "P-2（全链排产协同不足）"
+                            pain_weight: 40
+                            weight_basis: "expert_estimate"
+                        pain_weight_check:
+                          sum_to_100: true
+                          note: "60+40=100"
+                        scenarios:
+                          - scenario_id: "SC-2"
+                            name: "AI 全链一体化排产优化"
+                            ai_mechanism: "以炼化-PTA-聚酯全链产能、库存、订单、价差数据建模 → 识别跨装置协同损失 → 优化排产与产品结构（减油增化） → 闭环到计划排产系统，降低中间损耗、提高高价值产品收率"
+                            linked_pains: ["P-2（全链排产协同不足）", "P-1（收率寻优依赖人工经验）"]
+                            expected_factor_improvement: "高价值化工品收率 +0.3~0.8pct（示意·待回填）"
+                            merge_reason: ""
+          - direction: "单位原料采购成本降低"
+            operator_logic: "单位原料采购成本 = 原油综合采购单价 × 单位产品原料消耗；本方向经 原油掺炼优化 ＋ 采购择时价差捕捉 降低采购单价"
+            key_levers:
+              - lever: "原油调合掺炼与采购择时优化"
+                impact_factors:
+                  - factor: "原油综合采购单价差"
+                    unit: "元/吨"
+                    data_source: "采购/贸易系统（待确认）"
+                    data_gap: "缺采购价差与择时空间数据"
+                    pain_contributions:
+                      - pain_ref: "P-3（原油掺炼与采购择时靠经验）"
+                        pain_weight: 100
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "单痛点=100"
+                    scenarios:
+                      - scenario_id: "SC-3"
+                        name: "AI 原油调合掺炼与采购择时优化"
+                        ai_mechanism: "以原油物性、装置适应性、价差与库存数据建模 → 识别最优掺炼配比与采购时机 → 预测掺炼经济性与价差窗口 → 闭环到采购与调合作业，降低单位原料采购成本"
+                        linked_pains: ["P-3（原油掺炼与采购择时靠经验）"]
+                        expected_factor_improvement: "原油综合采购单价差改善（示意·待回填）"
+                        merge_reason: ""
+                  - factor: "重质劣质原油掺炼比例"
+                    unit: "%"
+                    data_source: "调合/生产系统（待确认）"
+                    data_gap: "缺掺炼比例与经济性数据"
+                    pain_contributions:
+                      - pain_ref: "P-3（原油掺炼与采购择时靠经验）"
+                        pain_weight: 100
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "单痛点=100，与SC-3合并"
+                    scenarios:
+                      - scenario_id: "SC-3"
+                        name: "AI 原油调合掺炼与采购择时优化"
+                        ai_mechanism: "见SC-3"
+                        linked_pains: ["P-3（原油掺炼与采购择时靠经验）"]
+                        expected_factor_improvement: "劣质原油掺炼比例可控提升（示意·待回填）"
+                        merge_reason: "与综采单价差同属原油掺炼采购优化，合并为SC-3综合场景"
+
+      - cost_or_revenue_type: "单位能源成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "单位能源成本降低"
+            operator_logic: "单位能源成本 = 单位综合能耗 × 能源综合单价；本方向经 单位综合能耗降低 × 能源结构/公用工程平衡优化 降低能源成本"
+            key_levers:
+              - lever: "用能设备AI调优与蒸汽电热平衡优化"
+                impact_factors:
+                  - factor: "单位综合能耗"
+                    unit: "kgce/t"
+                    data_source: "能源管理系统/计量表（待确认）"
+                    data_gap: "缺单位综合能耗基线"
+                    pain_contributions:
+                      - pain_ref: "P-4（用能调控与公用工程未全局寻优）"
+                        pain_weight: 50
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-5（装置能效漂移难及时发现）"
+                        pain_weight: 50
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "50+50=100"
+                    scenarios:
+                      - scenario_id: "SC-4"
+                        name: "AI 能源管控与蒸汽电热平衡优化"
+                        ai_mechanism: "以各装置用能、蒸汽/电/热管网、负荷与气象数据建模 → 识别能效漂移与失衡模式 → 预测最优用能与联产调度 → 闭环到能源调度与操作参数，降低单位综合能耗"
+                        linked_pains: ["P-4（用能调控与公用工程未全局寻优）", "P-5（装置能效漂移难及时发现）"]
+                        expected_factor_improvement: "单位综合能耗 -1~3%（示意·待回填）"
+                        merge_reason: ""
+                  - factor: "蒸汽电综合单耗指数"
+                    unit: "指数(基准=100)"
+                    data_source: "能源管理系统（待确认）"
+                    data_gap: "缺蒸汽/电单耗基线"
+                    pain_contributions:
+                      - pain_ref: "P-4（用能调控与公用工程未全局寻优）"
+                        pain_weight: 60
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-5（装置能效漂移难及时发现）"
+                        pain_weight: 40
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "60+40=100，与SC-4合并"
+                    scenarios:
+                      - scenario_id: "SC-4"
+                        name: "AI 能源管控与蒸汽电热平衡优化"
+                        ai_mechanism: "见SC-4"
+                        linked_pains: ["P-4（用能调控与公用工程未全局寻优）"]
+                        expected_factor_improvement: "蒸汽/电单耗下降（示意·待回填）"
+                        merge_reason: "与单位综合能耗同属能源系统优化，合并为SC-4"
+
+      - cost_or_revenue_type: "单位维修与非计划停机损失成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "单位维修与停机损失成本降低"
+            operator_logic: "单位维修与停机损失成本 = 非计划停机损失 + 维修费用；本方向经 非计划停机损失降低 ＋ 维修费用优化 降低该成本"
+            key_levers:
+              - lever: "预测性维护与设备健康管理"
+                impact_factors:
+                  - factor: "非计划停机时长"
+                    unit: "小时/年"
+                    data_source: "设备管理/EAM系统（待确认）"
+                    data_gap: "缺非计划停机时长与损失基线"
+                    pain_contributions:
+                      - pain_ref: "P-6（设备故障缺早期预警）"
+                        pain_weight: 100
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "单痛点=100"
+                    scenarios:
+                      - scenario_id: "SC-5"
+                        name: "AI 设备预测性维护与健康管理"
+                        ai_mechanism: "以转动/换热等关键设备振动、温度、工艺与历史故障数据建模 → 识别早期劣化模式 → 预测剩余寿命与故障风险 → 闭环到检修计划与备件调度，降低非计划停机损失"
+                        linked_pains: ["P-6（设备故障缺早期预警）"]
+                        expected_factor_improvement: "非计划停机 -10~20%（示意·待回填）"
+                        merge_reason: ""
+                  - factor: "设备综合效率OEE"
+                    unit: "%"
+                    data_source: "生产MES/设备管理（待确认）"
+                    data_gap: "缺OEE基线"
+                    pain_contributions:
+                      - pain_ref: "P-6（设备故障缺早期预警）"
+                        pain_weight: 70
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-5（装置能效漂移难及时发现）"
+                        pain_weight: 30
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "70+30=100，与SC-5合并"
+                    scenarios:
+                      - scenario_id: "SC-5"
+                        name: "AI 设备预测性维护与健康管理"
+                        ai_mechanism: "见SC-5"
+                        linked_pains: ["P-6（设备故障缺早期预警）"]
+                        expected_factor_improvement: "OEE提升（示意·待回填）"
+                        merge_reason: "与非计划停机同属设备可靠性，合并为SC-5"
+
+      - cost_or_revenue_type: "单位质量损失成本"
+        operator_to_siblings: "+"
+        value_directions:
+          - direction: "单位质量损失成本降低"
+            operator_logic: "单位质量损失成本 =(1 − 产品一次合格率)× 单位返工降级报废损失；本方向经 一次合格率提升 降低返工报废损失"
+            key_levers:
+              - lever: "在线质量检测与工艺参数闭环"
+                impact_factors:
+                  - factor: "产品一次合格率"
+                    unit: "%"
+                    data_source: "LIMS/质量系统（待确认）"
+                    data_gap: "缺一次合格率/A品率基线"
+                    pain_contributions:
+                      - pain_ref: "P-7（质量波动反馈滞后）"
+                        pain_weight: 100
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "单痛点=100"
+                    scenarios:
+                      - scenario_id: "SC-6"
+                        name: "AI 在线质量检测与工艺闭环优化"
+                        ai_mechanism: "以在线检测、工艺参数与质量结果数据建模 → 识别质量波动与工艺关联 → 预测质量偏移并推荐参数调整 → 闭环到工艺控制，提升一次合格率、降低返工报废"
+                        linked_pains: ["P-7（质量波动反馈滞后）"]
+                        expected_factor_improvement: "一次合格率提升（示意·待回填）"
+                        merge_reason: ""
+                  - factor: "化纤断头率"
+                    unit: "次/千锭·时"
+                    data_source: "纺丝生产系统（待确认）"
+                    data_gap: "缺断头率基线"
+                    pain_contributions:
+                      - pain_ref: "P-7（质量波动反馈滞后）"
+                        pain_weight: 70
+                        weight_basis: "expert_estimate"
+                      - pain_ref: "P-5（装置能效漂移难及时发现）"
+                        pain_weight: 30
+                        weight_basis: "expert_estimate"
+                    pain_weight_check:
+                      sum_to_100: true
+                      note: "70+30=100，与SC-6合并"
+                    scenarios:
+                      - scenario_id: "SC-6"
+                        name: "AI 在线质量检测与工艺闭环优化"
+                        ai_mechanism: "见SC-6"
+                        linked_pains: ["P-7（质量波动反馈滞后）"]
+                        expected_factor_improvement: "断头率下降（示意·待回填）"
+                        merge_reason: "与一次合格率同属质量闭环，合并为SC-6"
+
+gates:
+  tree_mode_match: "pass（单棵成本树，符合 single_cost_tree）"
+  caliber_single: "pass（全树成本节约口径，root_equation左侧为成本）"
+  classification_basis_stated: "pass（成本科目 + rationale，同层未混口径）"
+  mece: "pass（四成本科目互斥、合计构成单位加工完全成本；人工/折旧列背景项）"
+  operator_logic_present: "pass（各价值方向均带 ×/＋/− 运算符）"
+  factor_unit_required: "pass（每个影响因子带单位）"
+  pain_per_factor: "pass（每个影响因子至少挂1个痛点）"
+  pain_weight_sum_100: "pass（各影响因子痛点权重合计=100%）"
+  ai_scenario_required: "pass（6个AI场景均说明数据→识别→预测优化→闭环）"
+status: "complete"
+# @AI_GENERATED: end

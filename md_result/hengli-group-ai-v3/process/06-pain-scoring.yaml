@@ -1,0 +1,85 @@
+# @AI_GENERATED
+step: "06-pain-scoring"
+mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性（cost_down）"
+weights: { value: 0.40, trend: 0.25, solvability: 0.20, verifiability: 0.15 }
+
+scored_pain_points:
+  - pain_ref: "P-1（装置工况寻优依赖人工经验）"
+    linked_factors: ["单位产品综合能耗", "高价值产品收率"]
+    scores: { value: 10, trend: 10, solvability: 8, verifiability: 6 }
+    weighted_score: 9.0
+    business_context: "炼化/聚酯装置日常操作"
+    conclusion: "core"
+  - pain_ref: "P-4（反应分离参数人工调节偏差）"
+    linked_factors: ["高价值产品收率"]
+    scores: { value: 10, trend: 8, solvability: 8, verifiability: 6 }
+    weighted_score: 8.5
+    business_context: "炼化反应/分离操作"
+    conclusion: "core"
+  - pain_ref: "P-7（大机组故障缺早期预警）"
+    linked_factors: ["非计划停车时长", "关键机组故障率"]
+    scores: { value: 10, trend: 8, solvability: 8, verifiability: 6 }
+    weighted_score: 8.5
+    business_context: "关键大机组运行"
+    conclusion: "core"
+  - pain_ref: "P-2（全厂能量协同调度不足）"
+    linked_factors: ["单位产品综合能耗", "蒸汽管网损失率"]
+    scores: { value: 8, trend: 8, solvability: 8, verifiability: 6 }
+    weighted_score: 7.7
+    business_context: "全厂公用工程调度"
+    conclusion: "core"
+  - pain_ref: "P-5（聚合质量在线感知不足）"
+    linked_factors: ["聚酯优等品率"]
+    scores: { value: 8, trend: 6, solvability: 6, verifiability: 6 }
+    weighted_score: 6.8
+    business_context: "聚酯聚合生产"
+    conclusion: "core"
+  - pain_ref: "P-6（排产与牌号切换靠经验）"
+    linked_factors: ["牌号切换损失量"]
+    scores: { value: 6, trend: 6, solvability: 8, verifiability: 6 }
+    weighted_score: 6.4
+    business_context: "多牌号排产切换"
+    conclusion: "excluded"
+  - pain_ref: "P-9（碳排放核算缺实时监测）"
+    linked_factors: ["单位产品碳排放强度"]
+    scores: { value: 6, trend: 10, solvability: 6, verifiability: 4 }
+    weighted_score: 6.7
+    business_context: "碳排放核算与配额管理"
+    conclusion: "strategic_background"
+  - pain_ref: "P-10（能碳未协同优化）"
+    linked_factors: ["单位产品碳排放强度", "余热余压回收率"]
+    scores: { value: 8, trend: 10, solvability: 6, verifiability: 4 }
+    weighted_score: 7.5
+    business_context: "能效与碳协同管理"
+    conclusion: "strategic_background"
+  - pain_ref: "P-3（换热网络效率衰减识别滞后）"
+    linked_factors: ["单位产品综合能耗", "蒸汽管网损失率"]
+    scores: { value: 6, trend: 6, solvability: 6, verifiability: 6 }
+    weighted_score: 6.0
+    business_context: "换热网络运行"
+    conclusion: "excluded"
+  - pain_ref: "P-8（检修计划非按状态优化）"
+    linked_factors: ["非计划停车时长"]
+    scores: { value: 6, trend: 6, solvability: 6, verifiability: 6 }
+    weighted_score: 6.0
+    business_context: "检修计划编排"
+    conclusion: "excluded"
+
+core_pain_pool:
+  - { pain_ref: "P-1（装置工况寻优依赖人工经验）", tier: "core", weighted_score: 9.0, note: "能耗+收率双驱动，价值最大" }
+  - { pain_ref: "P-4（反应分离参数人工调节偏差）", tier: "core", weighted_score: 8.5, note: "收率价差主来源" }
+  - { pain_ref: "P-7（大机组故障缺早期预警）", tier: "core", weighted_score: 8.5, note: "停车损失千万级" }
+  - { pain_ref: "P-2（全厂能量协同调度不足）", tier: "core", weighted_score: 7.7, note: "全厂能源协同" }
+  - { pain_ref: "P-5（聚合质量在线感知不足）", tier: "core", weighted_score: 6.8, note: "优等品率/降级损失" }
+
+strategic_background_pool:
+  - { pain_ref: "P-10（能碳未协同优化）", weighted_score: 7.5, reason: "可验证性<6（缺碳排放台账/碳价口径）", promote_trigger: "补齐碳排放台账与碳价口径后升入主叙事" }
+  - { pain_ref: "P-9（碳排放核算缺实时监测）", weighted_score: 6.7, reason: "可验证性<6（缺实时碳监测基线）", promote_trigger: "部署装置级碳监测、建立基线后升入主叙事" }
+
+gates:
+  ranking: "pass（按加权总分排序）"
+  hard_gates: "pass（核心池均满足可解决性≥6、可验证性≥6、有业务落点；P-9/P-10 可验证性4<6→降级为战略背景）"
+  not_root_cause_weight: "pass（本步为业务优先级，与03根因权重不混用）"
+
+status: "complete"
+# @AI_GENERATED: end

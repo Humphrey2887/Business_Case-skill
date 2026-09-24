@@ -1,0 +1,194 @@
+# @AI_GENERATED
+step: "02-critical-mission"
+industry: "炼化—化纤全产业链"
+client: "恒力集团"
+
+research_inputs:
+  industry_common_mission_critical: "cost_down：过剩+价差收窄+能耗双控下，压降单位产品原料+能源综合成本、提升重资产装置利用与稳定运行效率"
+  business_process_economics_summary: "原料采购(55-65%总成本估)、炼油/PX/PTA/聚合能耗与收率、新材料良率、公用工程能源(6-10%成本)、大机组停车与维修"
+  data_ledger_summary: "600346 FY2025营收2009.86亿(-14.93%)、利润总额94.20亿(+6.81%)；直接材料82-88%、能源6-10%成本(行业估算)；装置级单耗/良率/停车损失基线为缺口"
+  initial_client_mc_options: ["cost_down(能源+效率系统降本)", "revenue_up(新材料良率高端化)", "both(双树)"]
+
+research_summary:
+  client_type: "民营特大型全产业链制造集团"
+  company_ontology: "石油炼化一体化→PX→PTA→聚酯新材料→民用丝/工业丝/织造+功能膜/可降解/锂电隔膜；靠加工价差与一体化规模赚钱"
+  industry_environment: "过剩+价差收窄+能耗双控/碳排放双控趋严"
+  external_trends: "石化行业周期性调整+结构性重构；双碳；AI/工业大模型在流程工业加速落地(APC/RTO/预测性维护/质量在线优化)"
+  core_responsibility: "把大宗原油转化为差异化聚酯与高附加值新材料，赚取原料-产品加工价差"
+  key_constraints: "加工价差周期波动、能耗双控/碳排放、装置连续稳定运行、重资产高折旧"
+  uploaded_material_position: "不适用（无上传材料）"
+
+industry_client_mc_alignment:
+  relationship: "aligned"
+  industry_common_mc: "压降单位产品原料+能源综合成本、提升装置利用与稳定运行效率(cost_down)"
+  client_specific_observation: "恒力装置规模全球领先(长兴岛2000万吨/年炼化、PTA约1660万吨/年级)，单位%改善的绝对金额远大于中小同业；FY2025营收降14.93%而利润总额升6.81%，印证利润由价差与效率而非规模驱动"
+  implication_for_candidate_generation: "客户 MC 与行业普遍 MC 一致，应聚焦成本方向；候选围绕原料转化效率、能源综合成本、装置资产效率展开"
+  evidence:
+    - "直接材料+能源占成本80-90%(industry_public)"
+    - "600346 2025营收-14.93%、利润总额+6.81%(company_public)"
+
+process_economics_diagnosis:
+  cost_hotspots:
+    - process: "炼油/PX/PTA/聚合装置能耗"
+      cost_item: "能源动力(蒸汽/电/燃料气)"
+      share_or_amount: "能源约占营业成本6-10%(行业估算)，是原料外最大可控项"
+      why_material: "占比高+可控性强+能耗双控趋势放大；大装置规模放大单位能耗改善金额"
+      evidence: ["行业能耗成本规律", "APC/RTO公开降耗区间1-3%"]
+      data_confidence: "medium"
+    - process: "炼化/聚酯收率与优等品率"
+      cost_item: "收率损失、优等品率、牌号切换损失"
+      share_or_amount: "高价值收率+0.5-2%即对应巨大价差(行业区间)"
+      why_material: "收率/优等品率直接决定加工价差兑现"
+      evidence: ["行业APC/RTO收率提升区间"]
+      data_confidence: "low"
+    - process: "大机组/连续装置稳定运行"
+      cost_item: "非计划停车损失、维修成本"
+      share_or_amount: "单次非计划停车损失以千万计(行业通识)"
+      why_material: "重资产单位固定成本对开工率极敏感"
+      evidence: ["预测性维护公开案例"]
+      data_confidence: "low"
+    - process: "公用工程能源与碳"
+      cost_item: "全厂蒸汽/电/热综合能耗、碳成本"
+      share_or_amount: "能源6-10%成本+碳成本上升"
+      why_material: "能耗双控向碳排放双控转型，碳成本进入成本函数"
+      evidence: ["双碳政策(public)"]
+      data_confidence: "low"
+  revenue_hotspots:
+    - process: "新材料(功能膜/隔膜/PBAT)"
+      revenue_item: "高附加值产品结构、良率"
+      share_or_amount: "新材料均价同比+9.84%(2026Q1)"
+      why_material: "逆势增长点(本次不作主线，用户选 cost_down)"
+      evidence: ["600346 2026Q1新材料均价+9.84%"]
+      data_confidence: "medium"
+  asset_or_risk_hotspots:
+    - process: "重资产装置利用率"
+      item: "装置OEE/开工率"
+      value_impact: "开工率每降1个百分点，单位固定成本显著上升"
+      why_material: "重资产高折旧对利用率高度敏感"
+      evidence: ["重资产制造业规律"]
+      data_confidence: "medium"
+
+value_direction_diagnosis:
+  cost_down:
+    supported: true
+    rationale: "原料+能源占成本80-90%，能源/收率/装置效率可控且可量化；巨大装置规模放大改善金额；利润由价差与效率驱动"
+    supporting_processes: ["炼油/PX/PTA/聚合能耗", "收率/优等品率", "大机组停车与维修", "公用工程能源与碳"]
+    evidence: ["成本结构", "600346利润逻辑", "APC/RTO/预测性维护公开区间"]
+  revenue_up:
+    supported: true
+    rationale: "新材料高端化是逆势增长点，但同质化基础产品价差薄，收入侧改善不确定性高于成本侧"
+    supporting_processes: ["新材料良率/高端化"]
+    evidence: ["新材料均价+9.84%"]
+  both:
+    supported: true
+    rationale: "降本为主线、增收为副线均成立"
+    condition: "若需覆盖结构性升级叙事"
+  recommendation:
+    suggested_direction: "cost_down"
+    reason: "成本侧空间最大、最普遍、最可量化，且装置规模放大绝对收益，最匹配全集团降本增效主线"
+    caveat: "新材料高端化(revenue_up)是长期结构性价值，本次作为战略背景而非主线；后续可加挂收益树"
+
+candidate_groups:
+  cost_down:
+    - id: "COST-1"
+      mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性，核心抓手是以 AI 系统性压降单位产品的原料转化+能源综合成本、并提升重资产装置的稳定运行与资产利用效率"
+      level: "company"
+      primary_kpi: "单位产品综合加工成本(元/吨) / 综合能耗(kgce/吨) / 装置综合效率OEE(%)"
+      key_levers: ["装置能耗寻优(APC/RTO)", "收率与优等品率优化", "大机组预测性维护", "公用工程能源与碳协同"]
+      linked_process_hotspots: ["装置能耗", "收率/优等品率", "大机组停车与维修", "公用工程能源与碳"]
+      industry_mc_alignment: "一致(aligned)"
+      evidence: ["原料+能源占成本80-90%", "利润由价差与效率驱动", "装置规模放大改善金额"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: false
+      uncertainty: "装置级单耗/收率/停车损失基线为缺口，需回填"
+    - id: "COST-2"
+      mission_critical: "提升重资产装置的低碳运营经济性，降低单位产品能耗与碳成本(能碳 Option)"
+      level: "business_line"
+      primary_kpi: "单位产品综合能耗(kgce/吨) / 单位碳成本(元/tCO2)"
+      key_levers: ["能效对标寻优", "余热余压与绿电利用", "碳资产与碳排放管理"]
+      linked_process_hotspots: ["公用工程能源与碳", "装置能耗"]
+      industry_mc_alignment: "更聚焦(more_focused，落在能源/碳分支)"
+      evidence: ["能源6-10%成本", "能耗双控向碳排放双控转型"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: true
+      uncertainty: "缺碳排放台账与能源结构数据"
+    - id: "COST-3"
+      mission_critical: "提升重资产连续装置的稳定运行与资产利用效率，降低非计划停车与维修成本"
+      level: "business_line"
+      primary_kpi: "非计划停车次数/时长 / 装置OEE(%) / 维修成本(元/年)"
+      key_levers: ["大机组预测性维护", "设备健康管理", "工艺参数异常预警"]
+      linked_process_hotspots: ["大机组停车与维修", "装置利用率"]
+      industry_mc_alignment: "更聚焦(more_focused，落在资产效率分支)"
+      evidence: ["单次非计划停车损失千万级", "重资产对开工率敏感"]
+      value_tree_implication: "single_cost_tree"
+      energy_carbon_related: false
+      uncertainty: "缺停车损失与维修成本基线"
+
+comparison:
+  - id: "COST-1"
+    scores: { mission_criticality: 10, constraint_strength: 10, business_value_impact: 10, trend_pressure: 8, evidence_strength: 8, decomposability: 10, actionability: 8, client_fit: 10 }
+    energy_carbon_relevance: "中(含能源分支)"
+    recommend_judgment: "推荐：公司级伞形命题，可完整拆成本树，涵盖能耗/收率/设备/公用工程四类抓手"
+  - id: "COST-2"
+    scores: { mission_criticality: 8, constraint_strength: 8, business_value_impact: 7, trend_pressure: 9, evidence_strength: 6, decomposability: 8, actionability: 7, client_fit: 8 }
+    energy_carbon_relevance: "高"
+    recommend_judgment: "不作主线：作为 COST-1 的能源/碳分支纳入成本树"
+  - id: "COST-3"
+    scores: { mission_criticality: 8, constraint_strength: 9, business_value_impact: 8, trend_pressure: 7, evidence_strength: 6, decomposability: 8, actionability: 8, client_fit: 9 }
+    energy_carbon_relevance: "低"
+    recommend_judgment: "不作主线：作为 COST-1 的设备/资产效率分支纳入成本树"
+
+recommendation:
+  recommended_id: "COST-1"
+  mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性，核心抓手是以 AI 系统性压降单位产品的原料转化+能源综合成本、并提升重资产装置的稳定运行与资产利用效率"
+  level: "company"
+  primary_kpi: "单位产品综合加工成本(元/吨) / 综合能耗(kgce/吨) / 装置OEE(%)"
+  key_levers: ["装置能耗寻优(APC/RTO)", "收率与优等品率优化", "大机组预测性维护", "公用工程能源与碳协同"]
+  connection_chain:
+    our_offering: "工业大模型+AI(APC/RTO先进过程控制、装置实时寻优、预测性维护、质量在线优化、能碳协同)"
+    value_tree_branch: "落在成本树的能源/收率/设备/公用工程四大分支"
+    chain: "AI 方案 → 改善单位能耗/收率/优等品率/停车率 → 单位产品综合成本下降 → 单位综合加工成本(主KPI) → 穿越价差周期的盈利韧性(命题)"
+    magnitude_per_hop: "综合能耗-1~3%、高价值收率+0.5~2%、非计划停车下降(行业区间，示意)"
+    honest_boundary: "AI 改善集中在能源/收率/设备可控项；原料价格与产品售价属市场，不在AI直接控制范围，如实标注"
+  reasons:
+    client_ontology_fit: "契合全产业链一体化+重资产连续制造本体，可控杠杆集中在成本侧"
+    core_conflict_hit: "命中价差周期下的核心生存压力：守住并扩大加工价差"
+    priority_judgment: "成本侧最普遍、最可量化、装置规模放大绝对收益，属当前必须优先"
+    advantage_over_others: "比单一能碳/单一设备命题更完整，可作公司级伞形命题统领四类抓手"
+    other_candidates_position: "COST-2(能碳)、COST-3(设备)作为 COST-1 成本树的分支"
+    uploaded_material_position: "不适用"
+    business_case_support: "足够大、可拆价值树、可行动、可量化，支撑10min+ Business Case"
+    primary_kpi_role: "单位综合加工成本/综合能耗/OEE 衡量命题是否改善，非命题本身"
+
+user_value_direction_choice:
+  status: "confirmed"
+  selected_direction: "cost_down"
+  selected_by_user: true
+  user_comment: "用户在 Step 01 检查点选择『仅降本（单成本树）』"
+  implication_for_value_tree: "single_cost_tree"
+
+confirmed_customer_mission:
+  value_direction: "cost_down"
+  mission_critical: "提升穿越价差周期的成本竞争力与盈利韧性，核心抓手是以 AI 系统性压降单位产品的原料转化+能源综合成本、并提升重资产装置的稳定运行与资产利用效率"
+  primary_kpi: "单位产品综合加工成本(元/吨) / 综合能耗(kgce/吨) / 装置OEE(%)"
+  key_levers: ["装置能耗寻优(APC/RTO)", "收率与优等品率优化", "大机组预测性维护", "公用工程能源与碳协同"]
+  selected_candidate_id: "COST-1"
+  confirmation_status: "confirmed"
+  reason_for_selection: "公司级伞形成本命题，统领四类可量化抓手，最匹配全集团降本增效主线"
+
+downstream_contract:
+  value_tree_mode: "single_cost_tree"
+  tree_calibers_required: ["cost_saving"]
+  must_use_process_hotspots: ["装置能耗", "收率/优等品率", "大机组停车与维修", "公用工程能源与碳", "装置利用率"]
+  must_use_data_ledger_metrics: ["直接材料占成本82-88%", "能源占成本6-10%", "炼化/PTA/新材料季度产量", "600346营收与利润"]
+
+data_gaps:
+  - gap: "装置级单耗/收率/优等品率/停车损失/维修成本基线"
+    affects: "成本树影响因子 baseline 与价值量化"
+    needed_from_user: "各装置单耗、收率、良率、停车与维修台账"
+  - gap: "碳排放与能源结构台账"
+    affects: "能碳分支量化"
+    needed_from_user: "碳排放清单、能源结构、绿电占比、碳成本口径"
+
+status: "complete"
+# @AI_GENERATED: end

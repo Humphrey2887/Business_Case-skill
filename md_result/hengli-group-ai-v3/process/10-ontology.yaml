@@ -1,0 +1,104 @@
+# @AI_GENERATED
+step: "10-ontology"
+client: "恒力集团"
+headline: "一套四层 AI 技术架构，把降本场景从数据接入贯通到智能体决策"
+
+agents:
+  - id: "AG-1"
+    name: "装置能耗寻优智能体"
+    expected_business_action: "实时寻优并下发装置操作设定值，逼近最低能耗工况"
+    linked_scenarios: ["SC-1"]
+    uses_skills: ["SK-1", "SK-4"]
+  - id: "AG-2"
+    name: "收率优化智能体"
+    expected_business_action: "推荐反应/分离最优参数，提升高价值产品收率"
+    linked_scenarios: ["SC-3"]
+    uses_skills: ["SK-1", "SK-4"]
+  - id: "AG-3"
+    name: "质量在线优化智能体"
+    expected_business_action: "质量偏移前提前纠偏工艺参数，提升优等品率"
+    linked_scenarios: ["SC-4"]
+    uses_skills: ["SK-2", "SK-4"]
+  - id: "AG-4"
+    name: "设备健康与预测性维护智能体"
+    expected_business_action: "预测大机组故障、按状态编排检修，降低非计划停车"
+    linked_scenarios: ["SC-6"]
+    uses_skills: ["SK-3"]
+  - id: "AG-5"
+    name: "能碳协同优化智能体"
+    expected_business_action: "能耗与碳排联合寻优，管理碳配额"
+    linked_scenarios: ["SC-7"]
+    uses_skills: ["SK-4", "SK-5", "SK-6"]
+  - id: "AG-6"
+    name: "全厂能量调度智能体"
+    expected_business_action: "优化蒸汽等级分配与机组组合，降低管网损失"
+    linked_scenarios: ["SC-2"]
+    uses_skills: ["SK-4", "SK-6"]
+
+agent_skills:
+  - id: "SK-1"
+    name: "工艺机理+数据混合建模"
+    linked_ontology_layer: "实践论/认识论"
+    data_sources: ["DS-1", "DS-2"]
+  - id: "SK-2"
+    name: "软测量质量在线预测"
+    linked_ontology_layer: "认识论"
+    data_sources: ["DS-1", "DS-3"]
+  - id: "SK-3"
+    name: "时序异常检测与剩余寿命预测"
+    linked_ontology_layer: "认识论"
+    data_sources: ["DS-4"]
+  - id: "SK-4"
+    name: "多目标寻优与优化求解"
+    linked_ontology_layer: "实践论"
+    data_sources: ["DS-1", "DS-7"]
+  - id: "SK-5"
+    name: "碳排放核算与因果归因"
+    linked_ontology_layer: "认识论/实践论"
+    data_sources: ["DS-6"]
+  - id: "SK-6"
+    name: "能碳/能量联合优化与排产求解"
+    linked_ontology_layer: "实践论"
+    data_sources: ["DS-1", "DS-5", "DS-8"]
+
+ontology_layers:
+  semantic_existence:   # 存在论·语义关联本体
+    - "装置/大机组/管网等生产资产对象与拓扑关系"
+    - "工艺流程、物料流与产品牌号/质量规格"
+    - "能源介质（蒸汽/电/燃料气）与碳排放实体"
+  situational_epistemology:  # 认识论·态势感知本体
+    - "工况偏离最优点识别"
+    - "收率/质量偏差归因"
+    - "设备健康状态评估与故障预警"
+    - "能耗/碳强度实时监测"
+  simulation_practice:  # 实践论·仿真决策本体
+    - "操作参数寻优与工况优化"
+    - "排产/牌号切换优化"
+    - "按状态检修决策"
+    - "能碳联合优化仿真"
+
+data_sources:
+  - { id: "DS-1", name: "DCS/实时数据库（工艺参数、负荷、能耗）", linked_scenarios: ["SC-1","SC-2","SC-3"] }
+  - { id: "DS-2", name: "LIMS/生产报表（进料性质、产品分布、收率）", linked_scenarios: ["SC-3"] }
+  - { id: "DS-3", name: "聚合在线检测（光谱/黏度）", linked_scenarios: ["SC-4"] }
+  - { id: "DS-4", name: "设备振动/温度/状态监测", linked_scenarios: ["SC-6"] }
+  - { id: "DS-5", name: "MES/排产系统（订单、产能、切换代价）", linked_scenarios: ["SC-5"] }
+  - { id: "DS-6", name: "能碳管理平台/碳排放台账", linked_scenarios: ["SC-7"] }
+  - { id: "DS-7", name: "公用工程能量平衡台账（蒸汽/电/热）", linked_scenarios: ["SC-2"] }
+  - { id: "DS-8", name: "外部市场数据（电价/碳价/大宗价格）", linked_scenarios: ["SC-7"] }
+
+side_labels:
+  left: ["智能体调度与技能编排", "本体知识架构", "装置控制与数据接入"]
+  right: ["行动主体", "物理引擎", "知识骨架", "感知接入"]
+
+gates:
+  traceable: "pass（6 agent / 6 skill / 3 本体框 / 8 数据源均回溯 01/03/08/09）"
+  layer_consistency: "pass（数据→本体三框→skill→agent 自下而上连贯）"
+  not_hardcoded: "pass（按炼化—化纤案例生成，未套电力模板）"
+  ppt_ready: "pass（四层+三框+左右标签可绘，直角框，无内部字段）"
+
+data_gaps:
+  - "各数据源的实际接入范围与数据质量待客户确认（尤其碳排放台账 DS-6、公用工程平衡台账 DS-7）"
+
+status: "complete"
+# @AI_GENERATED: end
